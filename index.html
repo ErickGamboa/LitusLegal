@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Litus Legal Services — Tamarindo, Costa Rica</title>
+<script>(function(){try{var t=localStorage.getItem('litus-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141414;
+  --ink-soft:#33373a;
+  --paper:#f3e9d6;
+  --mist:#ece0c8;
+  --mist-2:#e2d3b6;
+  --stone:#8f836d;
+  --line:#ddcfb2;
+  --teal:#2E5E61;
+  --teal-deep:#234748;
+  --teal-soft:#6E9B9B;
+  --surface:#fbf5e8;
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html[data-theme="dark"]{
+  --ink:#e9ecec;
+  --ink-soft:#aeb6b6;
+  --paper:#0d1617;
+  --mist:#111c1d;
+  --mist-2:#1a2627;
+  --stone:#8a9595;
+  --line:rgba(255,255,255,.12);
+  --teal:#4e9295;
+  --teal-deep:#3f7e81;
+  --teal-soft:#8cb4b4;
+  --surface:#16211f;
+}
+html{transition:background-color .4s ease}
+body,.section,.svc,.tst,.calendar,.strip,footer,header.nav{transition:background-color .4s ease,color .4s ease}
+/* keep intentionally-dark bands dark in both themes */
+[data-theme="dark"] .strip{background:#0a1313}
+[data-theme="dark"] footer{background:#0a1313}
+[data-theme="dark"] header.nav.scrolled{background:rgba(13,22,23,.92);box-shadow:0 1px 0 var(--line)}
+[data-theme="dark"] .btn--dark{background:var(--ink);color:var(--paper)}
+[data-theme="dark"] .map{background:linear-gradient(135deg,#16211f,#1f2c2b)}
+[data-theme="dark"] .map .nm{background:rgba(13,22,23,.82);color:var(--ink-soft)}
+[data-theme="dark"] .cal-days .d.muted{color:#465251}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+/* ---------- shared type ---------- */
+.eyebrow{font-family:var(--sans);font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--teal)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:.005em}
+h2{font-size:clamp(32px,4.4vw,54px);color:var(--ink)}
+h3{font-size:24px}
+.lead{font-size:19px;color:var(--ink-soft);font-weight:300;max-width:60ch}
+.section{padding:120px 0}
+.section--mist{background:var(--mist)}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+
+/* ---------- logo mark ---------- */
+.mark{display:flex;align-items:center;gap:14px}
+.mark svg{display:block}
+.mark .word{display:flex;flex-direction:column;line-height:1}
+.mark .word b{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:.04em}
+.mark .word small{font-family:var(--sans);font-weight:400;font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;margin-top:5px;opacity:.7}
+
+/* ---------- nav ---------- */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.4s ease}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px}
+.nav-links{display:flex;align-items:center;gap:38px;list-style:none}
+.nav-links a{font-size:13.5px;letter-spacing:.06em;font-weight:400;position:relative;padding:4px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:currentColor;transition:.3s}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{opacity:1;color:var(--teal-soft);font-weight:600}
+.nav-links a.active::after{width:100%;background:var(--teal-soft);height:2px}
+header.nav.scrolled .nav-links a.active{color:var(--teal)}
+header.nav.scrolled .nav-links a.active::after{background:var(--teal)}
+.nav-actions{display:flex;align-items:center;gap:18px}
+.lang{display:flex;align-items:center;gap:0;border:1px solid currentColor;border-radius:30px;overflow:hidden;font-size:11px;letter-spacing:.08em;opacity:.85}
+.lang button{background:none;border:none;color:inherit;font-family:var(--sans);padding:6px 12px;cursor:pointer;font-weight:500;letter-spacing:.08em;opacity:.6;transition:.25s}
+.lang button.active{opacity:1}
+.lang button.active span{position:relative}
+.lang button.active span::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1.5px;background:currentColor}
+.lang .sep{width:1px;align-self:stretch;background:currentColor;opacity:.35}
+.lang .lang-ic{display:flex;align-items:center;padding-left:11px;opacity:.75}
+.lang .lang-ic svg{width:14px;height:14px;display:block}
+.lang .lang-ic + button{padding-left:8px}
+/* day/night uses the SAME segmented pill as the language toggle */
+.theme-seg button{display:flex;align-items:center;justify-content:center;padding:6px 11px;position:relative}
+.theme-seg svg{width:15px;height:15px;display:block}
+.theme-seg button.active::after{content:"";position:absolute;left:8px;right:8px;bottom:1px;height:1.5px;background:currentColor;border-radius:2px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:13px;letter-spacing:.08em;font-weight:500;padding:13px 26px;border-radius:30px;cursor:pointer;transition:.3s;border:1px solid transparent;white-space:nowrap}
+.btn--solid{background:var(--teal);color:#fff}
+.btn--solid:hover{background:var(--teal-deep)}
+.btn--ghost{border-color:rgba(255,255,255,.6);color:#fff}
+.btn--ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.btn--dark{background:var(--ink);color:#fff}
+.btn--dark:hover{background:#000}
+.btn--line{border-color:var(--line);color:var(--ink)}
+.btn--line:hover{border-color:var(--teal);color:var(--teal)}
+
+/* nav over hero (light) vs scrolled (solid) */
+header.nav{color:#fff}
+header.nav.scrolled{background:rgba(243,233,214,.96);color:var(--ink);box-shadow:0 1px 0 var(--line);backdrop-filter:saturate(180%) blur(6px)}
+header.nav.scrolled .lang{opacity:1}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;overflow:hidden;color:#fff}
+/* --- beach background: enters from the left --- */
+.hero .hero-bg{position:absolute;inset:0;z-index:0;background:url('assets/playa-hero.png') center/cover;
+   transform-origin:left center;
+   animation:bgIn 1.6s cubic-bezier(.22,.61,.36,1) both}
+/* --- legibility veil: dark on the left (text), clear on the right (figure) --- */
+.hero .veil{position:absolute;inset:0;z-index:1;background:
+   linear-gradient(95deg,rgba(13,26,27,.82) 0%,rgba(13,26,27,.55) 30%,rgba(13,26,27,.12) 52%,rgba(13,26,27,0) 70%),
+   linear-gradient(180deg,rgba(13,26,27,.45) 0%,rgba(13,26,27,0) 30%,rgba(13,26,27,.35) 100%);
+   animation:fadeIn 1.6s ease both}
+/* soft teal glow that grounds the figure into the scene */
+.hero .hero-glow{position:absolute;right:0;bottom:0;width:55%;height:100%;z-index:1;
+   background:radial-gradient(70% 80% at 75% 80%,rgba(46,94,97,.45),transparent 70%);
+   animation:fadeIn 2s ease .3s both}
+/* --- lawyer cutout: enters from the right, settles in front of the beach --- */
+.hero .hero-figure{position:absolute;right:5%;bottom:0;height:92%;width:auto;z-index:2;
+   filter:drop-shadow(-26px 18px 34px rgba(8,18,18,.5));
+   animation:figIn 1.4s cubic-bezier(.22,.61,.36,1) .4s both}
+.hero .wrap{position:relative;z-index:3}
+.hero .wrap .eyebrow,.hero h1,.hero .sub,.hero .cta{animation:textUp 1s ease both}
+.hero .wrap .eyebrow{animation-delay:.6s}
+.hero h1{animation-delay:.74s}
+.hero .sub{animation-delay:.9s}
+.hero .cta{animation-delay:1.05s}
+@keyframes bgIn{from{opacity:0;transform:translateX(-55px) scale(1.12)}to{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes figIn{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes textUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-bg,.hero .hero-figure,.hero .veil,.hero .hero-glow,
+  .hero .wrap .eyebrow,.hero h1,.hero .sub,.hero .cta{animation:none}
+}
+.hero h1{font-size:clamp(44px,6.6vw,86px);font-weight:500;max-width:16ch;letter-spacing:.01em}
+.hero h1 em{font-style:italic;color:var(--teal-soft)}
+.hero .sub{margin-top:26px;font-size:19px;font-weight:300;max-width:50ch;color:rgba(255,255,255,.9)}
+.hero .cta{margin-top:42px;display:flex;gap:16px;flex-wrap:wrap}
+.hero .place{position:absolute;bottom:38px;left:0;right:0;z-index:2}
+.hero .place .wrap{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.scroll-hint{display:flex;align-items:center;gap:10px}
+.scroll-hint .line{width:46px;height:1px;background:rgba(255,255,255,.5);position:relative;overflow:hidden}
+.scroll-hint .line::after{content:"";position:absolute;left:-46px;top:0;width:46px;height:1px;background:#fff;animation:slide 2.4s infinite}
+@keyframes slide{0%{left:-46px}60%,100%{left:46px}}
+
+/* ---------- trust strip ---------- */
+.strip{background:var(--ink);color:#fff;padding:30px 0}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.strip .item{display:flex;align-items:center;gap:12px;font-size:13.5px;letter-spacing:.04em;color:rgba(255,255,255,.82)}
+.strip .item svg{flex:none;opacity:.7}
+
+/* ---------- intro ---------- */
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}
+.intro-grid .figure{position:relative}
+.intro-grid img{border-radius:4px;height:520px;object-fit:cover;width:100%;filter:saturate(.92)}
+.intro-grid .badge{position:absolute;bottom:-26px;left:-26px;background:var(--surface);padding:26px 30px;border-radius:4px;box-shadow:0 24px 60px -30px rgba(20,40,40,.5)}
+.intro-grid .badge .n{font-family:var(--serif);font-size:46px;color:var(--teal);line-height:1}
+.intro-grid .badge .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-top:6px}
+.sig{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--ink);margin-top:30px}
+.sig small{display:block;font-family:var(--sans);font-style:normal;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-top:8px}
+
+/* ---------- about / quiénes somos ---------- */
+.about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:80px;align-items:start}
+.about-head h2{font-size:clamp(30px,3.6vw,46px)}
+.about-head{position:sticky;top:120px}
+.about-body .lead{font-size:21px;color:var(--ink-soft)}
+.principles{margin-top:40px;border-top:1px solid var(--line)}
+.principle{display:flex;gap:22px;padding:26px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.principle .pic{flex:none;width:30px;height:30px;color:var(--teal);margin-top:3px}
+.principle h3{font-size:20px}
+.principle p{margin-top:7px;color:var(--ink-soft);font-size:15px;max-width:52ch}
+
+/* ---------- services ---------- */
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;flex-wrap:wrap}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--surface);padding:44px 38px;transition:.35s ease;position:relative}
+.svc:hover{background:var(--teal);color:#fff}
+.svc .ic{width:46px;height:46px;color:var(--teal);transition:.35s}
+.svc:hover .ic{color:#fff}
+.svc h3{margin-top:26px;font-size:23px}
+.svc p{margin-top:14px;font-size:15px;color:var(--ink-soft);transition:.35s}
+.svc:hover p{color:rgba(255,255,255,.85)}
+.svc .more{margin-top:20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);transition:.35s}
+.svc:hover .more{color:#fff}
+
+/* ---------- place / nature ---------- */
+.place-sec{position:relative;color:#fff;overflow:hidden}
+.place-sec .bg{position:absolute;inset:0;background:url('assets/playa-mangle.png') center/cover;z-index:0}
+.place-sec .bg::after{content:"";position:absolute;inset:0;background:
+   linear-gradient(90deg,rgba(13,24,25,.9) 0%,rgba(13,24,25,.66) 48%,rgba(13,24,25,.78) 100%)}
+.place-sec .wrap{position:relative;z-index:1;padding:120px 32px}
+.place-sec h2{color:#fff;max-width:16ch}
+.place-sec .lead{color:rgba(255,255,255,.88)}
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.proc-steps{display:flex;flex-direction:column}
+.step{display:flex;gap:22px;padding:24px 0;border-top:1px solid rgba(255,255,255,.16);align-items:flex-start}
+.step:first-child{border-top:none;padding-top:0}
+.step .num{font-family:var(--serif);font-size:36px;line-height:1;color:var(--teal-soft);min-width:52px;font-weight:500}
+.step h3{font-size:21px;color:#fff}
+.step p{margin-top:7px;font-size:14.5px;color:rgba(255,255,255,.82);max-width:42ch}
+
+/* ---------- nosotros / team ---------- */
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px;margin-top:64px}
+.person{}
+.portrait{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/4.4;background:
+   linear-gradient(160deg,var(--mist-2),#dfe3e1);display:flex;align-items:flex-end;justify-content:center}
+.portrait .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--stone);gap:14px}
+.portrait .ph svg{opacity:.5}
+.portrait .ph span{font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,30,30,.55));z-index:1}
+.person .meta{margin-top:24px}
+.person .meta .role{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.person .meta h3{margin-top:8px;font-size:28px}
+.person .meta p{margin-top:12px;font-size:15px;color:var(--ink-soft);max-width:46ch}
+.person .creds{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.person .creds span{font-size:11px;letter-spacing:.08em;border:1px solid var(--line);border-radius:30px;padding:6px 14px;color:var(--stone)}
+
+/* ---------- testimonials ---------- */
+/* testimonials over photo background */
+.tst-sec{position:relative;overflow:hidden}
+.tst-sec::before{content:"";position:absolute;inset:0;background:url('assets/playa-panoramica.png') center/cover;z-index:0}
+.tst-sec::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(13,24,25,.86),rgba(13,24,25,.8) 40%,rgba(13,24,25,.86))}
+.tst-sec .wrap{position:relative;z-index:1}
+.tst-sec .eyebrow{color:var(--teal-soft)}
+.tst-sec h2{color:#fff}
+.tst-sec .lead{color:rgba(255,255,255,.86)}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px}
+.tst{background:var(--surface);border:1px solid transparent;border-radius:6px;padding:36px 34px;display:flex;flex-direction:column;box-shadow:0 34px 60px -38px rgba(0,0,0,.6)}
+[data-theme="dark"] .tst{border-color:var(--line)}
+.tst .quote{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--ink);font-style:italic}
+.tst .stars{color:var(--teal-soft);letter-spacing:3px;font-size:13px;margin-bottom:18px}
+.tst .who{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:26px}
+.flag{width:30px;height:21px;border-radius:3px;overflow:hidden;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.tst .who .nm{font-weight:500;font-size:14.5px}
+.tst .who .ct{font-size:12px;color:var(--stone);letter-spacing:.04em}
+
+/* ---------- calendar / cita ---------- */
+.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.calendar{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:34px;box-shadow:0 30px 70px -45px rgba(20,40,40,.4)}
+.cal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.cal-top .m{font-family:var(--serif);font-size:24px}
+.cal-top .nav-b{display:flex;gap:8px}
+.cal-top .nav-b button{width:34px;height:34px;border:1px solid var(--line);background:var(--surface);border-radius:50%;cursor:pointer;color:var(--ink-soft);display:flex;align-items:center;justify-content:center}
+.cal-top .nav-b button:hover{border-color:var(--teal);color:var(--teal)}
+.cal-dow,.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-dow span{text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:8px 0}
+.cal-days{margin-top:4px}
+.cal-days .d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:14px;border-radius:50%;color:var(--ink-soft);position:relative;cursor:default}
+.cal-days .d.muted{color:#c9ccc9}
+.cal-days .d.free{cursor:pointer;color:var(--ink);font-weight:400}
+.cal-days .d.free::after{content:"";position:absolute;bottom:6px;width:4px;height:4px;border-radius:50%;background:var(--teal-soft)}
+.cal-days .d.free:hover{background:var(--mist)}
+.cal-days .d.sel{background:var(--teal);color:#fff;font-weight:500}
+.cal-days .d.sel::after{background:#fff}
+.slots{margin-top:26px;border-top:1px solid var(--line);padding-top:22px}
+.slots .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:14px}
+.slots .row{display:flex;gap:10px;flex-wrap:wrap}
+.slots .row button{border:1px solid var(--line);background:var(--surface);border-radius:30px;padding:9px 18px;font-family:var(--sans);font-size:13px;cursor:pointer;color:var(--ink-soft)}
+.slots .row button:hover{border-color:var(--teal);color:var(--teal)}
+.slots .row button.on{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-bottom:9px}
+.field input,.field textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:11px 2px;font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:300}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--teal)}
+.field textarea{resize:none;min-height:90px}
+.cinfo{display:flex;flex-direction:column;gap:30px}
+.cinfo .blk{display:flex;gap:18px;align-items:flex-start}
+.cinfo .blk svg{flex:none;color:var(--teal);margin-top:3px}
+.cinfo .blk .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.cinfo .blk .v{font-size:16px;color:var(--ink);margin-top:5px}
+.map{margin-top:6px;height:200px;border-radius:8px;overflow:hidden;border:1px solid var(--line);position:relative;background:linear-gradient(135deg,#dfe6e4,#eef1ef)}
+.map .pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);color:var(--teal)}
+.map .nm{position:absolute;bottom:14px;left:16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);background:rgba(255,255,255,.85);padding:6px 12px;border-radius:30px}
+.map svg.roads{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 36px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+footer .mark .word b{color:#fff}
+footer .mark .word small{color:rgba(255,255,255,.6)}
+footer p.about{margin-top:22px;font-size:14px;max-width:34ch;line-height:1.7}
+footer h4{font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:20px;font-weight:500}
+footer ul{list-style:none}
+footer ul li{margin-bottom:12px;font-size:14px}
+footer ul li a:hover{color:#fff}
+.foot-bottom{margin-top:60px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;letter-spacing:.04em}
+
+/* ---------- whatsapp float ---------- */
+.wa{position:fixed;right:26px;bottom:26px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 34px -10px rgba(37,211,102,.6);transition:.3s;cursor:pointer}
+.wa:hover{transform:translateY(-3px) scale(1.04)}
+.wa svg{width:30px;height:30px;color:#fff}
+.wa .ping{position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:ping 2.4s infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+
+/* ---------- mobile menu ---------- */
+.nav-burger{display:none;width:30px;height:20px;position:relative;background:none;border:none;cursor:pointer;color:inherit;flex:none;padding:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+header.nav.scrolled .nav-burger,body.menu-open .nav-burger{filter:none}
+.nav-burger span{position:absolute;left:0;right:0;height:2px;border-radius:2px;background:currentColor;transition:.3s ease}
+.nav-burger span:nth-child(1){top:1px}
+.nav-burger span:nth-child(2){top:9px}
+.nav-burger span:nth-child(3){top:17px}
+.nav-burger.open span:nth-child(1){top:9px;transform:rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){top:9px;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;z-index:40;background:var(--paper);
+  display:flex;flex-direction:column;justify-content:center;gap:2px;padding:96px 32px 48px;
+  opacity:0;visibility:hidden;transform:translateY(-14px);transition:.35s ease}
+.mobile-menu.open{opacity:1;visibility:visible;transform:none}
+.mobile-menu a{font-family:var(--serif);font-size:clamp(26px,7vw,34px);color:var(--ink);padding:15px 0;border-bottom:1px solid var(--line);transition:color .25s}
+.mobile-menu a.active{color:var(--teal)}
+.mobile-menu .btn{font-family:var(--sans);font-size:14px;margin-top:30px;align-self:flex-start;border-bottom:none;color:#fff}
+.mm-controls{display:flex;gap:14px;align-items:center;margin-top:38px}
+.mm-controls .lang{opacity:1}
+body.menu-open{overflow:hidden}
+body.menu-open .nav-burger{color:var(--ink)}
+body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  .hero .hero-figure{height:68%;right:-6%;opacity:.38}
+  .hero .veil{background:
+     linear-gradient(180deg,rgba(13,26,27,.7) 0%,rgba(13,26,27,.4) 45%,rgba(13,26,27,.75) 100%)}
+  .hero .sub{max-width:46ch}
+  .section{padding:84px 0}
+  .place-sec .wrap{padding:84px 32px}
+  .intro-grid,.cal-grid,.contact-grid,.proc-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+  .intro-grid img{height:420px}
+  .about-head{position:static}
+  .svc-grid,.tst-grid{grid-template-columns:1fr 1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .place-sec .mini{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:680px){
+  .wrap{padding:0 22px}
+  .nav-inner{height:74px}
+  .mark{gap:12px}
+  .mark svg{width:52px;height:auto}
+  .mark .word b{font-size:27px}
+  .mark .word small{font-size:9px;letter-spacing:.34em}
+  .nav-actions{gap:12px}
+  .nav-cta{display:none}
+  .nav-actions .lang{display:none}
+  .section{padding:64px 0}
+  .place-sec .wrap{padding:64px 22px}
+  .svc-grid,.tst-grid,.team-grid,.foot-grid{grid-template-columns:1fr}
+  .svc{padding:34px 28px}
+  .tst{padding:28px 26px}
+  .calendar{padding:22px}
+  .cal-top .m{font-size:21px}
+  .cal-days .d{font-size:13px}
+  .lead{font-size:17px}
+  .about-body .lead{font-size:19px}
+  .strip .wrap{justify-content:center;text-align:center}
+  .hero .place .wrap{justify-content:center}
+  .hero .sub{font-size:17px}
+  .scroll-hint{display:none}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+  .wa{width:52px;height:52px;right:18px;bottom:18px}
+  .wa svg{width:27px;height:27px}
+}
+@media(max-width:380px){
+  .mark .word small{display:none}
+  .nav-actions{gap:9px}
+  .hero .hero-figure{opacity:.26}
+}
+[data-en]{display:none}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="mark" aria-label="Litus Legal Services">
+      <svg width="40" height="30" viewBox="0 0 120 88" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+        <!-- rays -->
+        <g stroke-width="2.2">
+          <line x1="60" y1="6" x2="60" y2="20"/>
+          <line x1="42" y1="11" x2="47" y2="23"/>
+          <line x1="78" y1="11" x2="73" y2="23"/>
+          <line x1="28" y1="22" x2="37" y2="31"/>
+          <line x1="92" y1="22" x2="83" y2="31"/>
+          <line x1="20" y1="37" x2="31" y2="42"/>
+          <line x1="100" y1="37" x2="89" y2="42"/>
+        </g>
+        <!-- sun -->
+        <path d="M40 52 A20 20 0 0 1 80 52" stroke-width="2.4"/>
+        <!-- horizon + waves -->
+        <path d="M10 52 H110" stroke-width="2.4"/>
+        <path d="M14 64 q14 -8 28 0 t28 0 t28 0" stroke-width="2.2"/>
+        <path d="M22 76 q14 -8 28 0 t28 0" stroke-width="2.2"/>
+      </svg>
+      <span class="word"><b>Litus</b><small>Legal Services</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios"><span data-es>Servicios</span><span data-en>Services</span></a></li>
+      <li><a href="#nosotros"><span data-es>Nosotros</span><span data-en>About</span></a></li>
+      <li><a href="#testimonios"><span data-es>Clientes</span><span data-en>Clients</span></a></li>
+      <li><a href="#cita"><span data-es>Agendar</span><span data-en>Book</span></a></li>
+      <li><a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang theme-seg" id="theme" role="group" aria-label="Modo claro u oscuro">
+        <button type="button" data-theme-set="light" class="active" aria-label="Modo claro" title="Modo claro">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M22 12h-2.4M4.4 12H2M19 5l-1.7 1.7M6.7 17.3L5 19M19 19l-1.7-1.7M6.7 6.7L5 5"/></svg>
+        </button>
+        <i class="sep"></i>
+        <button type="button" data-theme-set="dark" aria-label="Modo noche" title="Modo noche">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        </button>
+      </div>
+      <div class="lang" id="lang" title="Cambiar idioma / Change language">
+        <span class="lang-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg></span>
+        <button data-lang="es" class="active"><span>ES</span></button>
+        <i class="sep"></i>
+        <button data-lang="en"><span>EN</span></button>
+      </div>
+      <a href="#cita" class="btn btn--solid nav-cta"><span data-es>Agendar cita</span><span data-en>Book a call</span></a>
+      <button class="nav-burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="mmenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile menu -->
+<nav class="mobile-menu" id="mmenu" aria-label="Navegación móvil">
+  <a href="#servicios"><span data-es>Servicios</span><span data-en>Services</span></a>
+  <a href="#nosotros"><span data-es>Nosotros</span><span data-en>About</span></a>
+  <a href="#testimonios"><span data-es>Clientes</span><span data-en>Clients</span></a>
+  <a href="#cita"><span data-es>Agendar</span><span data-en>Book</span></a>
+  <a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a>
+  <div class="mm-controls">
+    <div class="lang theme-seg" role="group" aria-label="Modo claro u oscuro">
+      <button type="button" data-theme-set="light" class="active" aria-label="Modo claro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M22 12h-2.4M4.4 12H2M19 5l-1.7 1.7M6.7 17.3L5 19M19 19l-1.7-1.7M6.7 6.7L5 5"/></svg>
+      </button>
+      <i class="sep"></i>
+      <button type="button" data-theme-set="dark" aria-label="Modo noche">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+    </div>
+    <div class="lang" title="Cambiar idioma / Change language">
+      <span class="lang-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg></span>
+      <button data-lang="es" class="active"><span>ES</span></button>
+      <i class="sep"></i>
+      <button data-lang="en"><span>EN</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="veil"></div>
+  <div class="hero-glow"></div>
+  <img class="hero-figure" src="assets/abogada.png" alt="Abogada — Litus Legal Services">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--teal-soft)">Tamarindo · Guanacaste · Costa Rica</span>
+    <h1 style="margin-top:22px">
+      <span data-es>Derecho inmobiliario con <em>raíces en la costa</em>.</span>
+      <span data-en>Real estate law with <em>roots on the coast</em>.</span>
+    </h1>
+    <p class="sub">
+      <span data-es>Traslado de tierras, propiedades y notariado para quienes eligen vivir e invertir frente al Pacífico. Acompañamiento legal claro, bilingüe y de confianza.</span>
+      <span data-en>Land transfers, property and notarial services for those who choose to live and invest on the Pacific. Clear, bilingual legal guidance you can trust.</span>
+    </p>
+    <div class="cta">
+      <a href="#cita" class="btn btn--solid"><span data-es>Agendar una cita</span><span data-en>Book a consultation</span></a>
+      <a href="#servicios" class="btn btn--ghost"><span data-es>Ver servicios</span><span data-en>Our services</span></a>
+    </div>
+  </div>
+  <div class="place">
+    <div class="wrap">
+      <span><span data-es>Costa de Guanacaste</span><span data-en>Guanacaste Coast</span></span>
+      <div class="scroll-hint"><span data-es>Descubrir</span><span data-en>Scroll</span><i class="line"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>
+      <span><span data-es>+15 años ejerciendo en Guanacaste</span><span data-en>+15 years practicing in Guanacaste</span></span>
+    </div>
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+      <span><span data-es>Atención 100% bilingüe ES / EN</span><span data-en>Fully bilingual service ES / EN</span></span>
+    </div>
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M5 7l7-4 7 4M5 7v6c0 3 3.5 5 7 5s7-2 7-5V7"/></svg>
+      <span><span data-es>Notariado y derecho registral</span><span data-en>Notarial &amp; registry law</span></span>
+    </div>
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+      <span><span data-es>Clientes de 12+ nacionalidades</span><span data-en>Clients from 12+ nationalities</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT / QUIÉNES SOMOS ============ -->
+<section class="section about-sec" id="quienes">
+  <div class="wrap about-grid">
+    <div class="about-head">
+      <span class="eyebrow"><span data-es>Quiénes somos</span><span data-en>Who we are</span></span>
+      <h2 style="margin-top:18px">
+        <span data-es>Un bufete costero con estándares de ciudad.</span>
+        <span data-en>A coastal firm with big-city standards.</span>
+      </h2>
+      <div class="sig" style="margin-top:32px">Litus Legal Services
+        <small><span data-es>Tamarindo, Guanacaste · Costa Rica</span><span data-en>Tamarindo, Guanacaste · Costa Rica</span></small>
+      </div>
+    </div>
+    <div class="about-body">
+      <p class="lead">
+        <span data-es>Litus Legal Services nació en Tamarindo para acompañar a residentes, extranjeros e inversionistas en cada paso de sus asuntos legales en Costa Rica — desde la compra y traslado de propiedades hasta la constitución de sociedades y la residencia.</span>
+        <span data-en>Litus Legal Services was born in Tamarindo to guide residents, foreigners and investors through every legal matter in Costa Rica — from buying and transferring property to forming companies and securing residency.</span>
+      </p>
+      <div class="principles">
+        <div class="principle">
+          <svg class="pic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          <div>
+            <h3><span data-es>Cercanía local</span><span data-en>Local &amp; close</span></h3>
+            <p><span data-es>Vivimos y ejercemos en Guanacaste. Conocemos cada finca, cada plano y cada trámite de la zona.</span><span data-en>We live and practice in Guanacaste. We know every property, every plan and every local procedure.</span></p>
+          </div>
+        </div>
+        <div class="principle">
+          <svg class="pic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div>
+            <h3><span data-es>Rigor de bufete</span><span data-en>Firm-grade rigor</span></h3>
+            <p><span data-es>Estudio de registro exhaustivo y documentación impecable en cada caso. Sin cabos sueltos.</span><span data-en>Exhaustive title study and impeccable paperwork on every case. No loose ends.</span></p>
+          </div>
+        </div>
+        <div class="principle">
+          <svg class="pic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+          <div>
+            <h3><span data-es>Atención bilingüe</span><span data-en>Bilingual service</span></h3>
+            <p><span data-es>Te explicamos todo en español o inglés, sin tecnicismos confusos. Siempre sabrás qué firmas y por qué.</span><span data-en>We explain everything in Spanish or English, with no confusing jargon. You'll always know what you sign and why.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="section section--mist" id="servicios">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <span class="eyebrow"><span data-es>Áreas de práctica</span><span data-en>Practice areas</span></span>
+        <h2 style="margin-top:16px"><span data-es>Servicios legales</span><span data-en>Legal services</span></h2>
+      </div>
+      <p class="lead">
+        <span data-es>Especialistas en derecho inmobiliario y traslado de tierras en la costa de Guanacaste, con respaldo notarial y corporativo.</span>
+        <span data-en>Specialists in real estate law and land transfers on the Guanacaste coast, backed by notarial and corporate expertise.</span>
+      </p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 34l10-14 8 10 6-8 16 12"/><path d="M4 40h40"/><circle cx="14" cy="14" r="3"/></svg>
+        <h3><span data-es>Traslado de tierras</span><span data-en>Land transfers</span></h3>
+        <p><span data-es>Compraventa, titulación y traspaso de fincas y lotes con estudio de registro completo.</span><span data-en>Purchase, titling and transfer of land and lots with full registry due diligence.</span></p>
+        <div class="more"><span data-es>Conocer más →</span><span data-en>Learn more →</span></div>
+      </div>
+
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8"/><path d="M18 24h14M18 30h14M18 18h6"/></svg>
+        <h3><span data-es>Bienes raíces</span><span data-en>Real estate</span></h3>
+        <p><span data-es>Due diligence inmobiliario, contratos de compraventa y acompañamiento al cierre.</span><span data-en>Real estate due diligence, purchase agreements and closing support.</span></p>
+        <div class="more"><span data-es>Conocer más →</span><span data-en>Learn more →</span></div>
+      </div>
+
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M24 6v30"/><path d="M10 14h28"/><path d="M10 14l-5 12h10z"/><path d="M38 14l-5 12h10z"/><path d="M16 40h16"/></svg>
+        <h3><span data-es>Notariado</span><span data-en>Notary services</span></h3>
+        <p><span data-es>Escrituras, poderes y autenticaciones con fe pública notarial.</span><span data-en>Deeds, powers of attorney and notarized authentications.</span></p>
+        <div class="more"><span data-es>Conocer más →</span><span data-en>Learn more →</span></div>
+      </div>
+
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="8" y="14" width="32" height="26" rx="2"/><path d="M18 14V9a6 6 0 0112 0v5"/><path d="M24 26v6"/></svg>
+        <h3><span data-es>Sociedades</span><span data-en>Corporate</span></h3>
+        <p><span data-es>Constitución de sociedades, estructuras de tenencia y cumplimiento corporativo.</span><span data-en>Company formation, holding structures and corporate compliance.</span></p>
+        <div class="more"><span data-es>Conocer más →</span><span data-en>Learn more →</span></div>
+      </div>
+
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="10" y="6" width="28" height="36" rx="3"/><circle cx="24" cy="20" r="5"/><path d="M16 34c2-4 14-4 16 0"/></svg>
+        <h3><span data-es>Residencia &amp; migración</span><span data-en>Residency &amp; immigration</span></h3>
+        <p><span data-es>Gestión de residencias para inversionistas, pensionados y rentistas.</span><span data-en>Residency processing for investors, pensioners and rentiers.</span></p>
+        <div class="more"><span data-es>Conocer más →</span><span data-en>Learn more →</span></div>
+      </div>
+
+      <div class="svc">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M24 4l18 8-18 8L6 12z"/><path d="M14 17v11c0 4 5 7 10 7s10-3 10-7V17"/><path d="M42 12v10"/></svg>
+        <h3><span data-es>Asesoría &amp; contratos</span><span data-en>Advisory &amp; contracts</span></h3>
+        <p><span data-es>Redacción y revisión de contratos, arrendamientos y due diligence legal.</span><span data-en>Drafting and review of contracts, leases and legal due diligence.</span></p>
+        <div class="more"><span data-es>Conocer más →</span><span data-en>Learn more →</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="place-sec" id="proceso">
+  <div class="bg"></div>
+  <div class="wrap proc-grid">
+    <div class="proc-intro">
+      <span class="eyebrow" style="color:var(--teal-soft)"><span data-es>Tu proceso</span><span data-en>Your process</span></span>
+      <h2 style="margin-top:18px">
+        <span data-es>Procesos legales en Costa Rica con total tranquilidad.</span>
+        <span data-en>Legal processes in Costa Rica with complete peace of mind.</span>
+      </h2>
+      <p class="lead" style="margin-top:22px">
+        <span data-es>Cada proceso legal sigue un camino claro y verificado.</span>
+        <span data-en>Every legal process follows a clear, verified path.</span>
+      </p>
+      <a href="#contacto" class="btn btn--solid" style="margin-top:30px"><span data-es>Contáctanos</span><span data-en>Contact us</span></a>
+    </div>
+    <div class="proc-steps">
+      <div class="step">
+        <span class="num">01</span>
+        <div>
+          <h3><span data-es>Consulta inicial</span><span data-en>Initial consultation</span></h3>
+          <p><span data-es>Entendemos tu objetivo, revisamos la propiedad y definimos el plan legal.</span><span data-en>We understand your goal, review the property and set the legal plan.</span></p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <div>
+          <h3><span data-es>Estudio registral &amp; due diligence</span><span data-en>Title study &amp; due diligence</span></h3>
+          <p><span data-es>Verificamos título, linderos, planos, gravámenes e impuestos al día.</span><span data-en>We verify title, boundaries, plans, liens and taxes up to date.</span></p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <div>
+          <h3><span data-es>Escritura &amp; traspaso</span><span data-en>Deed &amp; transfer</span></h3>
+          <p><span data-es>Redactamos el contrato y firmamos el traspaso ante notaría con fe pública.</span><span data-en>We draft the contract and sign the transfer before a public notary.</span></p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <div>
+          <h3><span data-es>Inscripción &amp; entrega</span><span data-en>Registration &amp; handover</span></h3>
+          <p><span data-es>Inscribimos en el Registro Nacional y te entregamos tu propiedad, legalmente tuya.</span><span data-en>We register with the National Registry and hand over your property, legally yours.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOSOTROS / TEAM ============ -->
+<section class="section" id="nosotros">
+  <div class="wrap center">
+    <span class="eyebrow"><span data-es>El equipo</span><span data-en>The team</span></span>
+    <h2 style="margin-top:16px"><span data-es>Las personas detrás de Litus</span><span data-en>The people behind Litus</span></h2>
+    <p class="lead"><span data-es>Cercanas, rigurosas y profundamente locales. Conocemos cada trámite y cada playa.</span><span data-en>Approachable, rigorous and deeply local. We know every procedure — and every beach.</span></p>
+  </div>
+  <div class="wrap team-grid">
+    <div class="person">
+      <div class="portrait">
+        <div class="ph">
+          <svg width="60" height="60" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="17" r="9"/><path d="M8 42c2-9 12-12 16-12s14 3 16 12"/></svg>
+          <span><span data-es>Foto profesional</span><span data-en>Professional photo</span></span>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="role"><span data-es>Abogada &amp; Notaria · Socia fundadora</span><span data-en>Attorney &amp; Notary · Founding partner</span></div>
+        <h3>Lic. [Nombre Apellido]</h3>
+        <p><span data-es>Licenciada en Derecho, especialista en derecho inmobiliario y registral. Más de una década guiando a clientes nacionales y extranjeros en la costa de Guanacaste.</span><span data-en>Attorney specialized in real estate and registry law. Over a decade guiding local and foreign clients along the Guanacaste coast.</span></p>
+        <div class="creds">
+          <span><span data-es>Colegio de Abogados CR</span><span data-en>CR Bar Association</span></span>
+          <span><span data-es>Notaria Pública</span><span data-en>Public Notary</span></span>
+          <span>ES / EN</span>
+        </div>
+      </div>
+    </div>
+    <div class="person">
+      <div class="portrait">
+        <div class="ph">
+          <svg width="60" height="60" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="24" cy="17" r="9"/><path d="M8 42c2-9 12-12 16-12s14 3 16 12"/></svg>
+          <span><span data-es>Foto profesional</span><span data-en>Professional photo</span></span>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="role"><span data-es>Asistente legal · Atención al cliente</span><span data-en>Legal assistant · Client care</span></div>
+        <h3>[Nombre Apellido]</h3>
+        <p><span data-es>El primer rostro de Litus. Coordina citas, documentación y mantiene a cada cliente informado en su idioma, paso a paso.</span><span data-en>The first face of Litus. Coordinates appointments, paperwork and keeps every client informed in their language, step by step.</span></p>
+        <div class="creds">
+          <span><span data-es>Coordinación de trámites</span><span data-en>Case coordination</span></span>
+          <span>ES / EN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section tst-sec" id="testimonios">
+  <div class="wrap center">
+    <span class="eyebrow"><span data-es>Comentarios de clientes</span><span data-en>Client reviews</span></span>
+    <h2 style="margin-top:16px"><span data-es>Confianza sin fronteras</span><span data-en>Trust without borders</span></h2>
+    <p class="lead"><span data-es>Personas de todo el mundo que hoy tienen su pedacito de Costa Rica, legalmente seguro.</span><span data-en>People from around the world who now own their piece of Costa Rica — legally secure.</span></p>
+  </div>
+  <div class="wrap tst-grid">
+
+    <div class="tst">
+      <div class="stars">★★★★★</div>
+      <p class="quote"><span data-es>“Compramos un lote frente al mar sin hablar español. Lo explicaron todo con paciencia y el traspaso fue impecable.”</span><span data-en>“We bought an oceanfront lot without speaking Spanish. They explained everything patiently and the transfer was flawless.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Estados Unidos">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><g fill="#B22234"><rect width="30" height="2.6" y="0"/><rect width="30" height="2.6" y="5.2"/><rect width="30" height="2.6" y="10.4"/><rect width="30" height="2.6" y="15.6"/><rect width="30" height="2.4" y="18.6"/></g><rect width="13" height="11.4" fill="#3C3B6E"/></svg>
+        </span>
+        <div><div class="nm">James &amp; Laura M.</div><div class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></div></div>
+      </div>
+    </div>
+
+    <div class="tst">
+      <div class="stars">★★★★★</div>
+      <p class="quote"><span data-es>“Profesionalismo de ciudad con el alma de la playa. Constituyeron mi sociedad y gestionaron mi residencia sin un solo dolor de cabeza.”</span><span data-en>“City-grade professionalism with a beach soul. They formed my company and handled my residency with zero headaches.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Canadá">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><rect width="7.5" height="21" fill="#D52B1E"/><rect width="7.5" height="21" x="22.5" fill="#D52B1E"/><path d="M15 5l1 2.5 2.5-1-1 2.5 2.5.5-2 1.5.6 2.4-2.6-1-2.6 1 .6-2.4-2-1.5 2.5-.5-1-2.5 2.5 1z" fill="#D52B1E"/></svg>
+        </span>
+        <div><div class="nm">Marc Tremblay</div><div class="ct"><span data-es>Canadá</span><span data-en>Canada</span></div></div>
+      </div>
+    </div>
+
+    <div class="tst">
+      <div class="stars">★★★★★</div>
+      <p class="quote"><span data-es>“Estudiaron el registro a fondo y encontraron un problema que nadie había visto. Salvaron nuestra inversión.”</span><span data-en>“They studied the title deeply and caught an issue no one had seen. They saved our investment.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Alemania">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="7" y="0" fill="#000"/><rect width="30" height="7" y="7" fill="#DD0000"/><rect width="30" height="7" y="14" fill="#FFCE00"/></svg>
+        </span>
+        <div><div class="nm">Anna &amp; Thomas K.</div><div class="ct"><span data-es>Alemania</span><span data-en>Germany</span></div></div>
+      </div>
+    </div>
+
+    <div class="tst">
+      <div class="stars">★★★★★</div>
+      <p class="quote"><span data-es>“Respuesta rápida por WhatsApp y todo bilingüe. Por fin un bufete que entiende al inversionista extranjero.”</span><span data-en>“Fast replies on WhatsApp and everything bilingual. Finally a firm that understands the foreign investor.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Francia">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="10" height="21" fill="#0055A4"/><rect width="10" height="21" x="10" fill="#fff"/><rect width="10" height="21" x="20" fill="#EF4135"/></svg>
+        </span>
+        <div><div class="nm">Camille R.</div><div class="ct"><span data-es>Francia</span><span data-en>France</span></div></div>
+      </div>
+    </div>
+
+    <div class="tst">
+      <div class="stars">★★★★★</div>
+      <p class="quote"><span data-es>“Cercanos como vecinos, serios como un gran bufete. Recomendados al 100% para traslado de tierras.”</span><span data-en>“As close as neighbors, as serious as a big firm. 100% recommended for land transfers.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Reino Unido">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#012169"/><path d="M0 0l30 21M30 0L0 21" stroke="#fff" stroke-width="3.5"/><path d="M0 0l30 21M30 0L0 21" stroke="#C8102E" stroke-width="1.6"/><path d="M15 0v21M0 10.5h30" stroke="#fff" stroke-width="6"/><path d="M15 0v21M0 10.5h30" stroke="#C8102E" stroke-width="3.4"/></svg>
+        </span>
+        <div><div class="nm">Oliver &amp; Sophie H.</div><div class="ct"><span data-es>Reino Unido</span><span data-en>United Kingdom</span></div></div>
+      </div>
+    </div>
+
+    <div class="tst">
+      <div class="stars">★★★★★</div>
+      <p class="quote"><span data-es>“Nos casamos con la idea de vivir aquí y ellos hicieron realidad la parte legal. Gracias por tanta calma.”</span><span data-en>“We fell in love with the idea of living here and they made the legal part real. Thank you for the calm.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Países Bajos">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="7" y="0" fill="#AE1C28"/><rect width="30" height="7" y="7" fill="#fff"/><rect width="30" height="7" y="14" fill="#21468B"/></svg>
+        </span>
+        <div><div class="nm">Daan &amp; Eva V.</div><div class="ct"><span data-es>Países Bajos</span><span data-en>Netherlands</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CALENDAR / CITA ============ -->
+<section class="section" id="cita">
+  <div class="wrap cal-grid">
+    <div>
+      <span class="eyebrow"><span data-es>Agenda en línea</span><span data-en>Online booking</span></span>
+      <h2 style="margin-top:16px"><span data-es>Reserva tu cita</span><span data-en>Book your appointment</span></h2>
+      <p class="lead" style="margin-top:20px"><span data-es>Elige el día y la hora que mejor te convenga. Primera consulta de orientación sin costo, presencial en Tamarindo o por videollamada.</span><span data-en>Pick the day and time that suits you best. Complimentary first orientation call — in person in Tamarindo or by video.</span></p>
+      <ul style="list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px">
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-es>Duración aprox. 30 minutos</span><span data-en>About 30 minutes</span></li>
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6"><path d="M2 12h20M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/><circle cx="12" cy="12" r="9"/></svg><span data-es>Atención en español e inglés</span><span data-en>Available in Spanish &amp; English</span></li>
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg><span data-es>Presencial o videollamada</span><span data-en>In person or video call</span></li>
+      </ul>
+    </div>
+    <div class="calendar">
+      <div class="cal-top">
+        <div class="m"><span data-es>Junio 2026</span><span data-en>June 2026</span></div>
+        <div class="nav-b">
+          <button aria-label="prev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <button aria-label="next"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="cal-dow">
+        <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+      </div>
+      <div class="cal-days">
+        <div class="d muted">31</div><div class="d free">1</div><div class="d free">2</div><div class="d">3</div><div class="d free">4</div><div class="d free">5</div><div class="d muted">6</div>
+        <div class="d muted">7</div><div class="d free">8</div><div class="d free">9</div><div class="d free">10</div><div class="d">11</div><div class="d free">12</div><div class="d muted">13</div>
+        <div class="d muted">14</div><div class="d free">15</div><div class="d sel">16</div><div class="d free">17</div><div class="d free">18</div><div class="d free">19</div><div class="d muted">20</div>
+        <div class="d muted">21</div><div class="d free">22</div><div class="d free">23</div><div class="d">24</div><div class="d free">25</div><div class="d free">26</div><div class="d muted">27</div>
+        <div class="d muted">28</div><div class="d free">29</div><div class="d free">30</div><div class="d muted">1</div><div class="d muted">2</div><div class="d muted">3</div><div class="d muted">4</div>
+      </div>
+      <div class="slots">
+        <div class="lbl"><span data-es>Martes 16 · Horarios disponibles</span><span data-en>Tuesday 16 · Available times</span></div>
+        <div class="row">
+          <button>09:00</button>
+          <button class="on">10:30</button>
+          <button>13:00</button>
+          <button>15:30</button>
+          <button>16:30</button>
+        </div>
+        <a href="#contacto" class="btn btn--solid" style="margin-top:22px;width:100%;justify-content:center"><span data-es>Confirmar cita</span><span data-en>Confirm appointment</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section--mist" id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow"><span data-es>Hablemos</span><span data-en>Let's talk</span></span>
+      <h2 style="margin-top:16px"><span data-es>Contáctanos</span><span data-en>Get in touch</span></h2>
+      <p class="lead" style="margin-top:18px"><span data-es>Cuéntanos tu caso y te responderemos en tu idioma, normalmente el mismo día.</span><span data-en>Tell us about your case — we'll reply in your language, usually the same day.</span></p>
+      <form style="margin-top:36px" onsubmit="return false">
+        <div class="field"><label><span data-es>Nombre</span><span data-en>Name</span></label><input type="text" placeholder="—"></div>
+        <div class="field"><label><span data-es>Correo</span><span data-en>Email</span></label><input type="email" placeholder="—"></div>
+        <div class="field"><label><span data-es>¿En qué podemos ayudarte?</span><span data-en>How can we help?</span></label><textarea placeholder="—"></textarea></div>
+        <button class="btn btn--dark" style="margin-top:6px"><span data-es>Enviar mensaje</span><span data-en>Send message</span></button>
+      </form>
+    </div>
+    <div class="cinfo">
+      <div class="blk">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+        <div><div class="t"><span data-es>Oficina</span><span data-en>Office</span></div><div class="v">Tamarindo, Santa Cruz<br>Guanacaste, Costa Rica</div></div>
+      </div>
+      <div class="blk">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4z"/><path d="M4 6l8 7 8-7"/></svg>
+        <div><div class="t">Email</div><div class="v">info@lituslegal.com</div></div>
+      </div>
+      <div class="blk">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2A16 16 0 013 6c0-1 1-2 2-2z"/></svg>
+        <div><div class="t"><span data-es>Teléfono / WhatsApp</span><span data-en>Phone / WhatsApp</span></div><div class="v">+506 0000 0000</div></div>
+      </div>
+      <div class="map">
+        <svg class="roads" viewBox="0 0 400 200" preserveAspectRatio="none" stroke="#fff" fill="none" stroke-width="3"><path d="M-20 60 Q150 40 420 110"/><path d="M80 -10 Q120 120 60 220"/><path d="M-20 150 Q200 130 420 170"/></svg>
+        <div class="pin"><svg width="34" height="34" viewBox="0 0 24 24" fill="var(--teal)" stroke="#fff" stroke-width="1.2"><path d="M12 22s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z"/><circle cx="12" cy="11" r="2.6" fill="#fff"/></svg></div>
+        <div class="nm">Litus Legal · Tamarindo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="mark">
+          <svg width="40" height="30" viewBox="0 0 120 88" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round">
+            <g stroke-width="2.2"><line x1="60" y1="6" x2="60" y2="20"/><line x1="42" y1="11" x2="47" y2="23"/><line x1="78" y1="11" x2="73" y2="23"/><line x1="28" y1="22" x2="37" y2="31"/><line x1="92" y1="22" x2="83" y2="31"/><line x1="20" y1="37" x2="31" y2="42"/><line x1="100" y1="37" x2="89" y2="42"/></g>
+            <path d="M40 52 A20 20 0 0 1 80 52"/><path d="M10 52 H110"/><path d="M14 64 q14 -8 28 0 t28 0 t28 0"/><path d="M22 76 q14 -8 28 0 t28 0"/>
+          </svg>
+          <span class="word"><b>Litus</b><small>Legal Services</small></span>
+        </div>
+        <p class="about"><span data-es>Derecho inmobiliario y traslado de tierras en Tamarindo, Costa Rica. Bilingüe, cercano y de confianza.</span><span data-en>Real estate law and land transfers in Tamarindo, Costa Rica. Bilingual, close and trustworthy.</span></p>
+      </div>
+      <div>
+        <h4><span data-es>Servicios</span><span data-en>Services</span></h4>
+        <ul>
+          <li><a href="#servicios"><span data-es>Traslado de tierras</span><span data-en>Land transfers</span></a></li>
+          <li><a href="#servicios"><span data-es>Bienes raíces</span><span data-en>Real estate</span></a></li>
+          <li><a href="#servicios"><span data-es>Notariado</span><span data-en>Notary</span></a></li>
+          <li><a href="#servicios"><span data-es>Residencia</span><span data-en>Residency</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-es>Bufete</span><span data-en>Firm</span></h4>
+        <ul>
+          <li><a href="#nosotros"><span data-es>Nosotros</span><span data-en>About</span></a></li>
+          <li><a href="#testimonios"><span data-es>Clientes</span><span data-en>Clients</span></a></li>
+          <li><a href="#cita"><span data-es>Agendar</span><span data-en>Book</span></a></li>
+          <li><a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Tamarindo</h4>
+        <ul>
+          <li>Santa Cruz, Guanacaste</li>
+          <li>Costa Rica</li>
+          <li>info@lituslegal.com</li>
+          <li>+506 0000 0000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Litus Legal Services. <span data-es>Todos los derechos reservados.</span><span data-en>All rights reserved.</span></span>
+      <span><span data-es>Diseñado con vista al mar.</span><span data-en>Designed with an ocean view.</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLOAT ============ -->
+<a class="wa" href="#" aria-label="WhatsApp">
+  <span class="ping"></span>
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-2c1.8 1 3.8 1.5 5.9 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.5c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.9 1 1-3.8-.3-.4a10 10 0 01-1.6-5.6C5.5 9.7 10.2 5 16 5s10.5 4.7 10.5 10.5S21.8 25.5 16 25.5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.5 3.8 6 5.3 2.2 1 3.1 1 4.2.9.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<script>
+/* --- language toggle (muestra el bilingüe; sin backend) --- */
+(function(){
+  var nav=document.getElementById('nav');
+
+  /* --- fondo del header al hacer scroll --- */
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>60); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* --- scrollspy: resalta el link de la sección visible --- */
+  var spy = Array.prototype.slice.call(document.querySelectorAll('.nav-links a, .mobile-menu a:not(.btn)'))
+    .map(function(a){
+      var id = a.getAttribute('href');
+      var sec = (id && id.charAt(0)==='#') ? document.querySelector(id) : null;
+      return sec ? {link:a, sec:sec} : null;
+    }).filter(Boolean);
+
+  function spyUpdate(){
+    var trigger = (nav.offsetHeight || 70) + 40;   // línea de disparo justo bajo el header
+    // sección actual = la más profunda cuyo tope ya pasó la línea de disparo
+    var current = null;
+    spy.forEach(function(s){
+      if (s.sec.getBoundingClientRect().top <= trigger && (!current || s.sec.offsetTop > current.offsetTop)) current = s.sec;
+    });
+    // cerca del final de la página: marca la última sección
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4 && spy.length){
+      current = spy[0].sec;
+      spy.forEach(function(s){ if (s.sec.offsetTop > current.offsetTop) current = s.sec; });
+    }
+    // resalta TODOS los enlaces (header y menú móvil) que apuntan a esa sección
+    spy.forEach(function(s){ s.link.classList.toggle('active', s.sec === current); });
+  }
+  window.addEventListener('scroll',spyUpdate,{passive:true});
+  window.addEventListener('resize',spyUpdate);
+  spyUpdate();
+
+  /* --- language toggle (header + menú móvil, por clase) --- */
+  function setLang(l){
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-es]').forEach(function(e){ e.style.display = l==='es'?'inline':'none'; });
+    document.querySelectorAll('[data-en]').forEach(function(e){ e.style.display = l==='en'?'inline':'none'; });
+    document.querySelectorAll('[data-lang]').forEach(function(b){ b.classList.toggle('active', b.dataset.lang===l); });
+  }
+
+  /* --- day / night toggle (mismo toggle segmentado; header + menú) --- */
+  function setTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    document.querySelectorAll('[data-theme-set]').forEach(function(b){ b.classList.toggle('active', b.dataset.themeSet===t); });
+    try{ localStorage.setItem('litus-theme', t); }catch(e){}
+  }
+
+  document.addEventListener('click',function(e){
+    var lb=e.target.closest('[data-lang]'); if(lb){ setLang(lb.dataset.lang); return; }
+    var tb=e.target.closest('[data-theme-set]'); if(tb){ setTheme(tb.dataset.themeSet); }
+  });
+  setLang('es');
+  setTheme(document.documentElement.getAttribute('data-theme')==='dark' ? 'dark' : 'light');
+
+  /* --- mobile menu --- */
+  var burger=document.getElementById('burger'), mmenu=document.getElementById('mmenu');
+  function closeMenu(){ burger.classList.remove('open'); mmenu.classList.remove('open'); document.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click',function(){
+    var open = burger.classList.toggle('open');
+    mmenu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open?'true':'false');
+  });
+  mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  window.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>980) closeMenu(); });
+
+  /* visual-only: pick a calendar day */
+  document.querySelectorAll('.cal-days .d.free').forEach(function(d){
+    d.addEventListener('click',function(){
+      document.querySelectorAll('.cal-days .d.sel').forEach(function(s){s.classList.remove('sel');s.classList.add('free');});
+      d.classList.remove('free'); d.classList.add('sel');
+    });
+  });
+  document.querySelectorAll('.slots .row button').forEach(function(s){
+    s.addEventListener('click',function(){
+      document.querySelectorAll('.slots .row button.on').forEach(function(o){o.classList.remove('on');});
+      s.classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>
