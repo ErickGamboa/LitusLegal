@@ -125,17 +125,13 @@ header.nav.scrolled .lang{opacity:1}
    animation:bgIn 1.6s cubic-bezier(.22,.61,.36,1) both}
 /* --- legibility veil: dark on the left (text), clear on the right (figure) --- */
 .hero .veil{position:absolute;inset:0;z-index:1;background:
-   linear-gradient(95deg,rgba(13,26,27,.82) 0%,rgba(13,26,27,.55) 30%,rgba(13,26,27,.12) 52%,rgba(13,26,27,0) 70%),
-   linear-gradient(180deg,rgba(13,26,27,.45) 0%,rgba(13,26,27,0) 30%,rgba(13,26,27,.35) 100%);
+   linear-gradient(100deg,rgba(13,26,27,.82) 0%,rgba(13,26,27,.52) 38%,rgba(13,26,27,.2) 64%,rgba(13,26,27,.08) 100%),
+   linear-gradient(180deg,rgba(13,26,27,.4) 0%,rgba(13,26,27,0) 34%,rgba(13,26,27,.44) 100%);
    animation:fadeIn 1.6s ease both}
-/* soft teal glow that grounds the figure into the scene */
-.hero .hero-glow{position:absolute;right:0;bottom:0;width:55%;height:100%;z-index:1;
-   background:radial-gradient(70% 80% at 75% 80%,rgba(46,94,97,.45),transparent 70%);
+/* soft teal glow that adds depth and warmth to the scene */
+.hero .hero-glow{position:absolute;right:0;bottom:0;width:60%;height:100%;z-index:1;
+   background:radial-gradient(75% 85% at 78% 78%,rgba(46,94,97,.4),transparent 72%);
    animation:fadeIn 2s ease .3s both}
-/* --- lawyer cutout: enters from the right, settles in front of the beach --- */
-.hero .hero-figure{position:absolute;right:5%;bottom:0;height:92%;width:auto;z-index:2;
-   filter:drop-shadow(-26px 18px 34px rgba(8,18,18,.5));
-   animation:figIn 1.4s cubic-bezier(.22,.61,.36,1) .4s both}
 .hero .wrap{position:relative;z-index:3}
 .hero .wrap .eyebrow,.hero h1,.hero .sub,.hero .cta{animation:textUp 1s ease both}
 .hero .wrap .eyebrow{animation-delay:.6s}
@@ -143,11 +139,10 @@ header.nav.scrolled .lang{opacity:1}
 .hero .sub{animation-delay:.9s}
 .hero .cta{animation-delay:1.05s}
 @keyframes bgIn{from{opacity:0;transform:translateX(-55px) scale(1.12)}to{opacity:1;transform:translateX(0) scale(1)}}
-@keyframes figIn{from{opacity:0;transform:translateX(90px)}to{opacity:1;transform:translateX(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes textUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){
-  .hero .hero-bg,.hero .hero-figure,.hero .veil,.hero .hero-glow,
+  .hero .hero-bg,.hero .veil,.hero .hero-glow,
   .hero .wrap .eyebrow,.hero h1,.hero .sub,.hero .cta{animation:none}
 }
 .hero h1{font-size:clamp(44px,6.6vw,86px);font-weight:500;max-width:16ch;letter-spacing:.01em}
@@ -163,8 +158,10 @@ header.nav.scrolled .lang{opacity:1}
 
 /* ---------- trust strip ---------- */
 .strip{background:var(--ink);color:#fff;padding:30px 0}
-.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
-.strip .item{display:flex;align-items:center;gap:12px;font-size:13.5px;letter-spacing:.04em;color:rgba(255,255,255,.82)}
+.strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.strip .group{display:flex;flex-direction:column;gap:16px}
+.strip .group--right{align-items:flex-end;text-align:right}
+.strip .item{display:flex;align-items:center;gap:12px;font-size:13.5px;letter-spacing:.04em;color:rgba(255,255,255,.82);white-space:nowrap}
 .strip .item svg{flex:none;opacity:.7}
 
 /* ---------- intro ---------- */
@@ -189,7 +186,7 @@ header.nav.scrolled .lang{opacity:1}
 .principle p{margin-top:7px;color:var(--ink-soft);font-size:15px;max-width:52ch}
 
 /* ---------- services ---------- */
-.svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:64px;flex-wrap:wrap}
+.svc-head{display:flex;justify-content:center;text-align:center;align-items:flex-end;gap:40px;margin-bottom:64px;flex-wrap:wrap}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .svc{background:var(--surface);padding:44px 38px;transition:.35s ease;position:relative}
 .svc:hover{background:var(--teal);color:#fff}
@@ -339,9 +336,8 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 
 /* ---------- responsive ---------- */
 @media(max-width:980px){
-  .hero .hero-figure{height:68%;right:-6%;opacity:.38}
   .hero .veil{background:
-     linear-gradient(180deg,rgba(13,26,27,.7) 0%,rgba(13,26,27,.4) 45%,rgba(13,26,27,.75) 100%)}
+     linear-gradient(180deg,rgba(13,26,27,.72) 0%,rgba(13,26,27,.42) 45%,rgba(13,26,27,.75) 100%)}
   .hero .sub{max-width:46ch}
   .section{padding:84px 0}
   .place-sec .wrap{padding:84px 32px}
@@ -351,6 +347,8 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   .svc-grid,.tst-grid{grid-template-columns:1fr 1fr}
   .team-grid{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
+  .strip .wrap{gap:24px}
+  .strip .group{gap:12px}
   .nav-links{display:none}
   .nav-burger{display:block}
   .place-sec .mini{grid-template-columns:repeat(3,1fr)}
@@ -375,7 +373,11 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   .cal-days .d{font-size:13px}
   .lead{font-size:17px}
   .about-body .lead{font-size:19px}
-  .strip .wrap{justify-content:center;text-align:center}
+  .strip .wrap{flex-direction:column;text-align:center;gap:14px}
+  .strip .group{gap:14px}
+  .strip .group--right{align-items:center;text-align:center}
+  .strip .item{white-space:normal;justify-content:center;align-items:flex-start}
+  .strip .item svg{margin-top:3px}
   .hero .place .wrap{justify-content:center}
   .hero .sub{font-size:17px}
   .scroll-hint{display:none}
@@ -386,7 +388,6 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 @media(max-width:380px){
   .mark .word small{display:none}
   .nav-actions{gap:9px}
-  .hero .hero-figure{opacity:.26}
 }
 [data-en]{display:none}
 </style>
@@ -479,16 +480,15 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   <div class="hero-bg"></div>
   <div class="veil"></div>
   <div class="hero-glow"></div>
-  <img class="hero-figure" src="assets/abogada.png" alt="Abogada — Litus Legal Services">
   <div class="wrap">
     <span class="eyebrow" style="color:var(--teal-soft)">Tamarindo · Guanacaste · Costa Rica</span>
     <h1 style="margin-top:22px">
-      <span data-es>Derecho inmobiliario con <em>raíces en la costa</em>.</span>
-      <span data-en>Real estate law with <em>roots on the coast</em>.</span>
+      <span data-es>Asesoría legal de confianza <em>en cada paso del camino</em>.</span>
+      <span data-en>Trusted legal guidance, <em>every step of the way</em>.</span>
     </h1>
     <p class="sub">
-      <span data-es>Traslado de tierras, propiedades y notariado para quienes eligen vivir e invertir frente al Pacífico. Acompañamiento legal claro, bilingüe y de confianza.</span>
-      <span data-en>Land transfers, property and notarial services for those who choose to live and invest on the Pacific. Clear, bilingual legal guidance you can trust.</span>
+      <span data-es>Ayudamos a personas, familias y empresas a gestionar sus asuntos legales en Costa Rica con claridad y confianza.</span>
+      <span data-en>Helping individuals, families, and businesses navigate legal matters in Costa Rica with clarity and confidence.</span>
     </p>
     <div class="cta">
       <a href="#cita" class="btn btn--solid"><span data-es>Agendar una cita</span><span data-en>Book a consultation</span></a>
@@ -506,21 +506,25 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 <!-- ============ TRUST STRIP ============ -->
 <div class="strip">
   <div class="wrap">
-    <div class="item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>
-      <span><span data-es>+15 años ejerciendo en Guanacaste</span><span data-en>+15 years practicing in Guanacaste</span></span>
+    <div class="group group--left">
+      <div class="item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg>
+        <span><span data-es>+10 años ejerciendo el derecho · +7 viviendo y ejerciendo en Guanacaste</span><span data-en>+10 years practicing law · +7 living &amp; practicing in Guanacaste</span></span>
+      </div>
+      <div class="item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M5 7l7-4 7 4M5 7v6c0 3 3.5 5 7 5s7-2 7-5V7"/></svg>
+        <span><span data-es>Corporativo · Inmobiliario · Migración · Contratos</span><span data-en>Corporate · Real Estate · Immigration · Contracts</span></span>
+      </div>
     </div>
-    <div class="item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
-      <span><span data-es>Atención 100% bilingüe ES / EN</span><span data-en>Fully bilingual service ES / EN</span></span>
-    </div>
-    <div class="item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M5 7l7-4 7 4M5 7v6c0 3 3.5 5 7 5s7-2 7-5V7"/></svg>
-      <span><span data-es>Notariado y derecho registral</span><span data-en>Notarial &amp; registry law</span></span>
-    </div>
-    <div class="item">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
-      <span><span data-es>Clientes de 12+ nacionalidades</span><span data-en>Clients from 12+ nationalities</span></span>
+    <div class="group group--right">
+      <div class="item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+        <span><span data-es>Atención 100% bilingüe ES / EN</span><span data-en>Fully bilingual service ES / EN</span></span>
+      </div>
+      <div class="item">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
+        <span><span data-es>Clientes de +10 nacionalidades</span><span data-en>Clients from +10 nationalities</span></span>
+      </div>
     </div>
   </div>
 </div>
@@ -531,8 +535,8 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
     <div class="about-head">
       <span class="eyebrow"><span data-es>Quiénes somos</span><span data-en>Who we are</span></span>
       <h2 style="margin-top:18px">
-        <span data-es>Un bufete costero con estándares de ciudad.</span>
-        <span data-en>A coastal firm with big-city standards.</span>
+        <span data-es>Un bufete costero moderno que ofrece experiencia local, visión global y atención personalizada.</span>
+        <span data-en>A modern coastal law firm delivering local expertise, a global perspective, and personalized service.</span>
       </h2>
       <div class="sig" style="margin-top:32px">Litus Legal Services
         <small><span data-es>Tamarindo, Guanacaste · Costa Rica</span><span data-en>Tamarindo, Guanacaste · Costa Rica</span></small>
@@ -540,29 +544,29 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
     </div>
     <div class="about-body">
       <p class="lead">
-        <span data-es>Litus Legal Services nació en Tamarindo para acompañar a residentes, extranjeros e inversionistas en cada paso de sus asuntos legales en Costa Rica — desde la compra y traslado de propiedades hasta la constitución de sociedades y la residencia.</span>
-        <span data-en>Litus Legal Services was born in Tamarindo to guide residents, foreigners and investors through every legal matter in Costa Rica — from buying and transferring property to forming companies and securing residency.</span>
+        <span data-es>Litus Legal Services nació en Tamarindo con el propósito de acompañar a residentes, extranjeros, locales e inversionistas en cada asunto legal en Costa Rica — desde la compra y traslado de propiedades hasta la constitución de sociedades y la obtención de residencia.</span>
+        <span data-en>Litus Legal Services was born in Tamarindo with the purpose of guiding residents, foreigners locals and investors through every legal matter in Costa Rica — from buying and transferring property to forming companies and securing residency.</span>
       </p>
       <div class="principles">
         <div class="principle">
           <svg class="pic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
           <div>
-            <h3><span data-es>Cercanía local</span><span data-en>Local &amp; close</span></h3>
-            <p><span data-es>Vivimos y ejercemos en Guanacaste. Conocemos cada finca, cada plano y cada trámite de la zona.</span><span data-en>We live and practice in Guanacaste. We know every property, every plan and every local procedure.</span></p>
+            <h3><span data-es>Arraigados en Guanacaste</span><span data-en>Rooted in Guanacaste</span></h3>
+            <p><span data-es>Guanacaste no es solo donde trabajamos: es nuestro hogar. Como parte de la comunidad, acompañamos a nuestros clientes con conocimiento local y un trato genuino.</span><span data-en>Guanacaste isn't just where we work—it's home. As part of the community, we guide our clients with local insight and genuine care.</span></p>
           </div>
         </div>
         <div class="principle">
           <svg class="pic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
           <div>
-            <h3><span data-es>Rigor de bufete</span><span data-en>Firm-grade rigor</span></h3>
-            <p><span data-es>Estudio de registro exhaustivo y documentación impecable en cada caso. Sin cabos sueltos.</span><span data-en>Exhaustive title study and impeccable paperwork on every case. No loose ends.</span></p>
+            <h3><span data-es>Cada detalle importa</span><span data-en>Every Detail Matters</span></h3>
+            <p><span data-es>Creemos que las transacciones exitosas y los resultados positivos se construyen sobre la experiencia, una debida diligencia exhaustiva, una comunicación clara y una asesoría legal cuidadosa.</span><span data-en>We believe successful transactions and positive outcomes are built on experience, thorough due diligence, clear communication, and thoughtful legal guidance.</span></p>
           </div>
         </div>
         <div class="principle">
           <svg class="pic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
           <div>
-            <h3><span data-es>Atención bilingüe</span><span data-en>Bilingual service</span></h3>
-            <p><span data-es>Te explicamos todo en español o inglés, sin tecnicismos confusos. Siempre sabrás qué firmas y por qué.</span><span data-en>We explain everything in Spanish or English, with no confusing jargon. You'll always know what you sign and why.</span></p>
+            <h3><span data-es>Entender cada paso</span><span data-en>Understanding Every Step</span></h3>
+            <p><span data-es>La comunicación clara es esencial. Brindamos asesoría legal en inglés y español, para que comprendas tus documentos, opciones y decisiones durante todo el proceso.</span><span data-en>Clear communication is essential. We provide legal guidance in English and Spanish, ensuring you understand your documents, options, and decisions throughout the process.</span></p>
           </div>
         </div>
       </div>
@@ -578,10 +582,6 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
         <span class="eyebrow"><span data-es>Áreas de práctica</span><span data-en>Practice areas</span></span>
         <h2 style="margin-top:16px"><span data-es>Servicios legales</span><span data-en>Legal services</span></h2>
       </div>
-      <p class="lead">
-        <span data-es>Especialistas en derecho inmobiliario y traslado de tierras en la costa de Guanacaste, con respaldo notarial y corporativo.</span>
-        <span data-en>Specialists in real estate law and land transfers on the Guanacaste coast, backed by notarial and corporate expertise.</span>
-      </p>
     </div>
     <div class="svc-grid">
 
