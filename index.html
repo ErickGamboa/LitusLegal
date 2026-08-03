@@ -259,11 +259,12 @@ header.nav.scrolled .lang{opacity:1}
 .tst-dots button:hover{background:rgba(255,255,255,.6)}
 .tst-dots button.on{background:var(--teal-soft);width:24px;border-radius:5px}
 .tst .quote{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--ink);font-style:italic}
-.tst .stars{color:var(--teal-soft);letter-spacing:3px;font-size:13px;margin-bottom:18px}
-.tst .who{display:flex;align-items:center;gap:13px;margin-top:auto;padding-top:26px}
-.flag{width:30px;height:21px;border-radius:3px;overflow:hidden;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
-.tst .who .nm{font-weight:500;font-size:14.5px}
-.tst .who .ct{font-size:12px;color:var(--stone);letter-spacing:.04em}
+.tst .who{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:20px}
+.flag{width:20px;height:14px;border-radius:2px;overflow:hidden;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.flag svg{width:100%;height:100%;display:block}
+.tst .who .flag{order:2;margin-left:3px}
+.tst .who .nm{font-weight:500;font-size:14px}
+.tst .who .ct{font-size:14px;color:var(--stone)}
 
 /* ---------- calendar / cita ---------- */
 .cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -302,10 +303,9 @@ header.nav.scrolled .lang{opacity:1}
 .cinfo .blk svg{flex:none;color:var(--teal);margin-top:3px}
 .cinfo .blk .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
 .cinfo .blk .v{font-size:16px;color:var(--ink);margin-top:5px}
-.map{margin-top:6px;height:200px;border-radius:8px;overflow:hidden;border:1px solid var(--line);position:relative;background:linear-gradient(135deg,#dfe6e4,#eef1ef)}
-.map .pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);color:var(--teal)}
-.map .nm{position:absolute;bottom:14px;left:16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);background:rgba(255,255,255,.85);padding:6px 12px;border-radius:30px}
-.map svg.roads{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.map{margin-top:6px;height:230px;border-radius:8px;overflow:hidden;border:1px solid var(--line);position:relative;background:linear-gradient(135deg,#dfe6e4,#eef1ef)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.map .nm{position:absolute;bottom:14px;left:16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);background:rgba(255,255,255,.85);padding:6px 12px;border-radius:30px;pointer-events:none}
 
 /* ---------- footer ---------- */
 footer{background:var(--ink);color:rgba(255,255,255,.7);padding:80px 0 36px}
@@ -768,98 +768,100 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 <section class="section tst-sec" id="testimonios">
   <div class="wrap center">
     <span class="eyebrow"><span data-es>Comentarios de clientes</span><span data-en>Client reviews</span></span>
-    <h2 style="margin-top:16px"><span data-es>Confianza sin fronteras</span><span data-en>Trust without borders</span></h2>
-    <p class="lead"><span data-es>Personas de todo el mundo que hoy tienen su pedacito de Costa Rica, legalmente seguro.</span><span data-en>People from around the world who now own their piece of Costa Rica — legally secure.</span></p>
+    <h2 style="margin-top:16px"><span data-es>La experiencia de trabajar con un abogado importa</span><span data-en>The experience of working with a lawyer matters</span></h2>
+    <p class="lead"><span data-es>Esto es lo que nuestros clientes han compartido sobre trabajar con nosotros.</span><span data-en>Here’s what our clients have shared about working with us.</span></p>
   </div>
   <div class="wrap tst-carousel">
     <button class="tst-arrow tst-prev" type="button" aria-label="Anterior">‹</button>
     <div class="tst-grid" id="tstTrack">
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“Tuve una excelente experiencia trabajando con Evelyn durante la compra de mi apartamento en Playa del Coco. Me explicó cada paso con anticipación y sus respuestas fueron rápidas, completas y tranquilizadoras. Si busca un equipo legal confiable, experto y eficiente, recomiendo ampliamente a Litus Legal Services.”</span><span data-en>“I had an excellent experience working with Evelyn during the purchase of my apartment in Playa del Coco. She explained every step in advance and her answers were fast, thorough and reassuring. If you're looking for a reliable, expert and efficient legal team, I highly recommend Litus Legal Services.”</span></p>
       <div class="who">
         <span class="flag" aria-label="República Checa">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="10.5" y="0" fill="#fff"/><rect width="30" height="10.5" y="10.5" fill="#D7141A"/><path d="M0 0L15 10.5 0 21Z" fill="#11457E"/></svg>
         </span>
-        <div><div class="nm">Jiri Binder</div><div class="ct"><span data-es>República Checa</span><span data-en>Czech Republic</span></div></div>
+        <span class="nm">Jiri B.,</span><span class="ct"><span data-es>República Checa</span><span data-en>Czech Republic</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“Lo que distingue a Evelyn son sus sólidos principios éticos: realmente desea ayudar a las personas y siempre actúa con integridad. Nunca me sentí engañada. Ahora gestiona mis impuestos anuales sobre la propiedad y me da una tranquilidad que vale la pena. Si busca una abogada experta, atenta y ética que realmente se preocupe por sus clientes, la recomiendo sin dudarlo.”</span><span data-en>“What sets Evelyn apart are her strong ethical principles: she genuinely wants to help people and always acts with integrity. I never felt oversold. She now handles my annual property taxes and gives me peace of mind that is worth it. If you want a knowledgeable, attentive and ethical attorney who truly cares about her clients, I recommend her without hesitation.”</span></p>
       <div class="who">
         <span class="flag" aria-label="Estados Unidos">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><g fill="#B22234"><rect width="30" height="2.6" y="0"/><rect width="30" height="2.6" y="5.2"/><rect width="30" height="2.6" y="10.4"/><rect width="30" height="2.6" y="15.6"/><rect width="30" height="2.4" y="18.6"/></g><rect width="13" height="11.4" fill="#3C3B6E"/></svg>
         </span>
-        <div><div class="nm">Chanel Starks</div><div class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></div></div>
+        <span class="nm">Chanel S.,</span><span class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“Nos recomendaron a Evelyn López para la compra de nuestra propiedad. Hablamos muy poco español, pero Evelyn habla un inglés excelente y nos hizo sentir muy cómodos durante todo el proceso. La compra se realizó sin ningún problema. Confío plenamente en ella y la recomiendo ampliamente.”</span><span data-en>“Evelyn López was recommended to us for our property purchase. We speak very little Spanish, but Evelyn speaks excellent English and made us feel very comfortable throughout the process. The purchase went through without any problem. I trust her completely and highly recommend her.”</span></p>
       <div class="who">
         <span class="flag" aria-label="Estados Unidos">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><g fill="#B22234"><rect width="30" height="2.6" y="0"/><rect width="30" height="2.6" y="5.2"/><rect width="30" height="2.6" y="10.4"/><rect width="30" height="2.6" y="15.6"/><rect width="30" height="2.4" y="18.6"/></g><rect width="13" height="11.4" fill="#3C3B6E"/></svg>
         </span>
-        <div><div class="nm">Kim Braden</div><div class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></div></div>
+        <span class="nm">Kim B.,</span><span class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“Mi prometida y yo compramos una propiedad en Tamarindo y tuvimos la suerte de contar con Evelyn. Fue muy profesional y se encargó de todo sin que tuviéramos que pedírselo. Muy paciente para asegurarse de que entendiéramos el proceso de compra. Si tuviéramos que volver a pasar por esto, sin duda la contrataríamos de nuevo.”</span><span data-en>“My fiancée and I bought a property in Tamarindo and we were lucky to have Evelyn on our team. She was very professional and took care of everything before we even had to ask. So patient in making sure we understood the buying process. If we had to go through this again, we would absolutely hire her again.”</span></p>
       <div class="who">
         <span class="flag" aria-label="Estados Unidos">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><g fill="#B22234"><rect width="30" height="2.6" y="0"/><rect width="30" height="2.6" y="5.2"/><rect width="30" height="2.6" y="10.4"/><rect width="30" height="2.6" y="15.6"/><rect width="30" height="2.4" y="18.6"/></g><rect width="13" height="11.4" fill="#3C3B6E"/></svg>
         </span>
-        <div><div class="nm">Bradley V.</div><div class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></div></div>
+        <span class="nm">Bradley V.,</span><span class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“Recomiendo ampliamente trabajar con Eve y su equipo. Son rápidos y eficientes a un precio muy razonable. ¡Muy amables y honestos desde el principio! La contraté para traducciones juradas y entrega personal de documentos judiciales.”</span><span data-en>“I highly recommend working with Eve and her team. They are fast and efficient at a very reasonable price. Very kind and honest from the start! I hired them for sworn translations and personal delivery of court documents.”</span></p>
       <div class="who">
         <span class="flag" aria-label="Alemania">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="7" y="0" fill="#000"/><rect width="30" height="7" y="7" fill="#DD0000"/><rect width="30" height="7" y="14" fill="#FFCE00"/></svg>
         </span>
-        <div><div class="nm">Aylin O.</div><div class="ct"><span data-es>Alemania</span><span data-en>Germany</span></div></div>
+        <span class="nm">Aylin O.,</span><span class="ct"><span data-es>Alemania</span><span data-en>Germany</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“He colaborado con Evelyn en varias ocasiones como abogada de cierre en transacciones inmobiliarias en Tamarindo y la recomiendo ampliamente. Trabajadora, meticulosa y sumamente confiable, aporta serenidad a cada transacción y hace que sus clientes se sientan completamente tranquilos. Si busca una abogada de bienes raíces confiable en Guanacaste, no busque más.”</span><span data-en>“I have worked with Evelyn on several occasions as a closing attorney on real estate transactions in Tamarindo, and I highly recommend her. Hardworking, meticulous and extremely reliable, she brings calm to every transaction and makes her clients feel completely at ease. If you are looking for a trustworthy real estate attorney in Guanacaste, look no further.”</span></p>
       <div class="who">
         <span class="flag" aria-label="Alemania">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="7" y="0" fill="#000"/><rect width="30" height="7" y="7" fill="#DD0000"/><rect width="30" height="7" y="14" fill="#FFCE00"/></svg>
         </span>
-        <div><div class="nm">Miriam Nolte</div><div class="ct"><span data-es>Alemania</span><span data-en>Germany</span></div></div>
+        <span class="nm">Miriam N.,</span><span class="ct"><span data-es>Alemania</span><span data-en>Germany</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“Siendo estadounidense, comprar en Costa Rica fue toda una aventura, pero con la asesoría de Evelyn resultó más divertida que complicada. Durante la debida diligencia me ayudó a ver que el vendedor no había sido transparente, y finalmente compré una casa. Hizo todo el proceso muy sencillo, incluso a miles de kilómetros de distancia. ¡Estoy sumamente feliz con mi nueva casa!”</span><span data-en>“As an American, buying property in Costa Rica turned out to be quite an adventure, but with Evelyn's expert guidance the experience was more fun than complicated. During due diligence she helped me realize the seller had not been transparent, and I ended up buying a house instead. She made the whole process very easy, even from thousands of miles away. I couldn't be happier with my new home!”</span></p>
       <div class="who">
         <span class="flag" aria-label="Estados Unidos">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><g fill="#B22234"><rect width="30" height="2.6" y="0"/><rect width="30" height="2.6" y="5.2"/><rect width="30" height="2.6" y="10.4"/><rect width="30" height="2.6" y="15.6"/><rect width="30" height="2.4" y="18.6"/></g><rect width="13" height="11.4" fill="#3C3B6E"/></svg>
         </span>
-        <div><div class="nm">Eldon Haakinson</div><div class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></div></div>
+        <span class="nm">Eldon H.,</span><span class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></span>
       </div>
     </div>
 
     <div class="tst">
-      <div class="stars">★★★★★</div>
       <p class="quote"><span data-es>“¡Evelyn es maravillosa! Muy competente, atenta y siempre dispuesta a ayudar. Nos ha acompañado en la residencia, el matrimonio y la llegada de nuestro bebé. Agradecemos enormemente su dedicación. ¡Nos encanta trabajar con ella!”</span><span data-en>“Evelyn is wonderful! Very knowledgeable, attentive and always willing to help. She has guided us through residency, marriage and the arrival of our baby. We are so grateful for her dedication. We love working with her!”</span></p>
       <div class="who">
         <span class="flag" aria-label="Estados Unidos">
           <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><g fill="#B22234"><rect width="30" height="2.6" y="0"/><rect width="30" height="2.6" y="5.2"/><rect width="30" height="2.6" y="10.4"/><rect width="30" height="2.6" y="15.6"/><rect width="30" height="2.4" y="18.6"/></g><rect width="13" height="11.4" fill="#3C3B6E"/></svg>
         </span>
-        <div><div class="nm">Abbie Green</div><div class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></div></div>
+        <span class="nm">Abbie G.,</span><span class="ct"><span data-es>Estados Unidos</span><span data-en>United States</span></span>
+      </div>
+    </div>
+
+    <div class="tst">
+      <p class="quote"><span data-es>“¡Evelyn y todo el equipo de Litus Legal Services son excepcionales! Mudarse a otro país puede ser abrumador, pero nos hicieron muy sencillo abrir una empresa y comprar y vender un carro. Hablan inglés y español a la perfección, así que no hay barrera de idioma. Lo que más destaca es su capacidad de respuesta: siempre contestan nuestras consultas, sin importar la hora. Los recomiendo ampliamente.”</span><span data-en>“Evelyn and her entire team at Litus Legal Services are absolutely amazing! Moving to a new country can be overwhelming, but they made starting a business and buying and selling a car very easy for us. They speak both English and Spanish perfectly, so there is no language barrier. What stands out the most is her responsiveness — she always answers our questions, no matter the time of day. I highly recommend them.”</span></p>
+      <div class="who">
+        <span class="flag" aria-label="Canadá">
+          <svg viewBox="0 0 30 21" width="30" height="21"><rect width="30" height="21" fill="#fff"/><rect width="7.5" height="21" x="0" fill="#D80621"/><rect width="7.5" height="21" x="22.5" fill="#D80621"/><polygon fill="#D80621" points="15,4 16.1,7.2 18.6,6.6 17.9,9 20.6,8.4 19.9,10.2 22.2,12 20.9,12.7 21.4,14.4 18,13.8 17.6,15 15.8,13.6 16.3,17.5 13.7,17.5 14.2,13.6 12.4,15 12,13.8 8.6,14.4 9.1,12.7 7.8,12 10.1,10.2 9.4,8.4 12.1,9 11.4,6.6 13.9,7.2"/></svg>
+        </span>
+        <span class="nm">Kimberly F.,</span><span class="ct"><span data-es>Canadá</span><span data-en>Canada</span></span>
       </div>
     </div>
 
@@ -873,13 +875,14 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 <section class="section" id="cita">
   <div class="wrap cal-grid">
     <div>
-      <span class="eyebrow"><span data-es>Agenda en línea</span><span data-en>Online booking</span></span>
-      <h2 style="margin-top:16px"><span data-es>Reserva tu cita</span><span data-en>Book your appointment</span></h2>
-      <p class="lead" style="margin-top:20px"><span data-es>Elige el día y la hora que mejor te convenga. Primera consulta de orientación sin costo, presencial en Tamarindo o por videollamada.</span><span data-en>Pick the day and time that suits you best. Complimentary first orientation call — in person in Tamarindo or by video.</span></p>
+      <span class="eyebrow"><span data-es>Agenda una consulta</span><span data-en>Schedule a consultation</span></span>
+      <h2 style="margin-top:16px"><span data-es>Las soluciones legales suelen empezar con una conversación</span><span data-en>Legal solutions often start with a conversation</span></h2>
+      <p class="lead" style="margin-top:20px"><span data-es>Nos tomamos el tiempo de entender tus objetivos, responder tus preguntas y explicarte el proceso para que avances con confianza.</span><span data-en>We take the time to understand your goals, answer your questions, and explain the process so you can move forward with confidence.</span></p>
       <ul style="list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px">
-        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-es>Duración aprox. 30 minutos</span><span data-en>About 30 minutes</span></li>
-        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6"><path d="M2 12h20M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/><circle cx="12" cy="12" r="9"/></svg><span data-es>Atención en español e inglés</span><span data-en>Available in Spanish &amp; English</span></li>
-        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg><span data-es>Presencial o videollamada</span><span data-en>In person or video call</span></li>
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Llamada introductoria sin costo</span><span data-en>Complimentary introductory call</span></li>
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Aproximadamente 30 minutos</span><span data-en>Approximately 30 minutes</span></li>
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Presencial o videollamada</span><span data-en>In person or video call</span></li>
+        <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Sujeto a confirmación</span><span data-en>Subject to confirmation</span></li>
       </ul>
     </div>
     <div class="calendar">
@@ -903,11 +906,12 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
       <div class="slots">
         <div class="lbl"><span data-es>Martes 16 · Horarios disponibles</span><span data-en>Tuesday 16 · Available times</span></div>
         <div class="row">
-          <button>09:00</button>
-          <button class="on">10:30</button>
-          <button>13:00</button>
+          <button class="on">11:00</button>
+          <button>11:30</button>
+          <button>12:00</button>
+          <button>15:00</button>
           <button>15:30</button>
-          <button>16:30</button>
+          <button>16:00</button>
         </div>
         <a href="#contacto" class="btn btn--solid" style="margin-top:22px;width:100%;justify-content:center"><span data-es>Confirmar cita</span><span data-en>Confirm appointment</span></a>
       </div>
@@ -919,9 +923,9 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 <section class="section section--mist" id="contacto">
   <div class="wrap contact-grid">
     <div>
-      <span class="eyebrow"><span data-es>Hablemos</span><span data-en>Let's talk</span></span>
-      <h2 style="margin-top:16px"><span data-es>Contáctanos</span><span data-en>Get in touch</span></h2>
-      <p class="lead" style="margin-top:18px"><span data-es>Cuéntanos tu caso y te responderemos en tu idioma, normalmente el mismo día.</span><span data-en>Tell us about your case — we'll reply in your language, usually the same day.</span></p>
+      <span class="eyebrow"><span data-es>Conversemos</span><span data-en>Let's connect</span></span>
+      <h2 style="margin-top:16px"><span data-es>Hablemos</span><span data-en>Let's talk</span></h2>
+      <p class="lead" style="margin-top:18px"><span data-es>¿Tienes una consulta o necesitas orientación legal? Escríbenos, con gusto te ayudamos.</span><span data-en>Have a question or need legal guidance? Send us a message — we'd be happy to help.</span></p>
       <form style="margin-top:36px" onsubmit="return false">
         <div class="field"><label><span data-es>Nombre</span><span data-en>Name</span></label><input type="text" placeholder="—"></div>
         <div class="field"><label><span data-es>Correo</span><span data-en>Email</span></label><input type="email" placeholder="—"></div>
@@ -932,19 +936,18 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
     <div class="cinfo">
       <div class="blk">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.4"/></svg>
-        <div><div class="t"><span data-es>Oficina</span><span data-en>Office</span></div><div class="v">Tamarindo, Santa Cruz<br>Guanacaste, Costa Rica</div></div>
+        <div><div class="t"><span data-es>Oficina</span><span data-en>Office</span></div><div class="v"><span data-es>Oficina 4, Alameda 2<br>Condominio La Entrada de Tamarindo<br>Tamarindo, Guanacaste 50309, Costa Rica</span><span data-en>Office 4, Alameda 2<br>Condominio La Entrada de Tamarindo<br>Tamarindo, Guanacaste 50309, Costa Rica</span></div></div>
       </div>
       <div class="blk">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v14H4z"/><path d="M4 6l8 7 8-7"/></svg>
-        <div><div class="t">Email</div><div class="v">info@lituslegal.com</div></div>
+        <div><div class="t">Email</div><div class="v">elopez@lituslegalcr.com</div></div>
       </div>
       <div class="blk">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2A16 16 0 013 6c0-1 1-2 2-2z"/></svg>
-        <div><div class="t"><span data-es>Teléfono / WhatsApp</span><span data-en>Phone / WhatsApp</span></div><div class="v">+506 0000 0000</div></div>
+        <div><div class="t"><span data-es>Teléfono / WhatsApp</span><span data-en>Phone / WhatsApp</span></div><div class="v">+506 8550 3104</div></div>
       </div>
       <div class="map">
-        <svg class="roads" viewBox="0 0 400 200" preserveAspectRatio="none" stroke="#fff" fill="none" stroke-width="3"><path d="M-20 60 Q150 40 420 110"/><path d="M80 -10 Q120 120 60 220"/><path d="M-20 150 Q200 130 420 170"/></svg>
-        <div class="pin"><svg width="34" height="34" viewBox="0 0 24 24" fill="var(--teal)" stroke="#fff" stroke-width="1.2"><path d="M12 22s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z"/><circle cx="12" cy="11" r="2.6" fill="#fff"/></svg></div>
+        <iframe src="https://www.google.com/maps?q=Litus+Legal+Services%2C+Condominio+La+Entrada+de+Tamarindo%2C+Tamarindo%2C+Guanacaste%2C+Costa+Rica&amp;z=16&amp;output=embed" title="Litus Legal Services · Tamarindo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         <div class="nm">Litus Legal · Tamarindo</div>
       </div>
     </div>
@@ -963,15 +966,17 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
           </svg>
           <span class="word"><b>Litus</b><small>Legal Services</small></span>
         </div>
-        <p class="about"><span data-es>Derecho inmobiliario y traslado de tierras en Tamarindo, Costa Rica. Bilingüe, cercano y de confianza.</span><span data-en>Real estate law and land transfers in Tamarindo, Costa Rica. Bilingual, close and trustworthy.</span></p>
+        <p class="about"><span data-es>Acompañamos a nuestros clientes en decisiones importantes con claridad, cuidado y confianza.</span><span data-en>Guiding clients through important decisions with clarity, care, and confidence.</span></p>
       </div>
       <div>
         <h4><span data-es>Servicios</span><span data-en>Services</span></h4>
         <ul>
-          <li><a href="#servicios"><span data-es>Traslado de tierras</span><span data-en>Land transfers</span></a></li>
-          <li><a href="#servicios"><span data-es>Bienes raíces</span><span data-en>Real estate</span></a></li>
-          <li><a href="#servicios"><span data-es>Notariado</span><span data-en>Notary</span></a></li>
-          <li><a href="#servicios"><span data-es>Residencia</span><span data-en>Residency</span></a></li>
+          <li><a href="#servicios"><span data-es>Bienes raíces</span><span data-en>Real Estate</span></a></li>
+          <li><a href="#servicios"><span data-es>Corporativo</span><span data-en>Corporate</span></a></li>
+          <li><a href="#servicios"><span data-es>Servicios notariales</span><span data-en>Notary Services</span></a></li>
+          <li><a href="#servicios"><span data-es>Migración</span><span data-en>Immigration</span></a></li>
+          <li><a href="#servicios"><span data-es>Planificación patrimonial</span><span data-en>Estate Planning</span></a></li>
+          <li><a href="#servicios"><span data-es>Servicios gubernamentales y administrativos</span><span data-en>Government &amp; Administrative Services</span></a></li>
         </ul>
       </div>
       <div>
@@ -986,10 +991,11 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
       <div>
         <h4>Tamarindo</h4>
         <ul>
-          <li>Santa Cruz, Guanacaste</li>
-          <li>Costa Rica</li>
-          <li>info@lituslegal.com</li>
-          <li>+506 0000 0000</li>
+          <li><span data-es>Oficina 4, Alameda 2</span><span data-en>Office 4, Alameda 2</span></li>
+          <li>Condominio La Entrada de Tamarindo</li>
+          <li>Guanacaste 50309, Costa Rica</li>
+          <li>elopez@lituslegalcr.com</li>
+          <li>+506 8550 3104</li>
         </ul>
       </div>
     </div>
@@ -1001,7 +1007,7 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 </footer>
 
 <!-- ============ WHATSAPP FLOAT ============ -->
-<a class="wa" href="#" aria-label="WhatsApp">
+<a class="wa" href="https://wa.me/50685503104" target="_blank" rel="noopener" aria-label="WhatsApp">
   <span class="ping"></span>
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-2c1.8 1 3.8 1.5 5.9 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.5c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.9 1 1-3.8-.3-.4a10 10 0 01-1.6-5.6C5.5 9.7 10.2 5 16 5s10.5 4.7 10.5 10.5S21.8 25.5 16 25.5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.5 3.8 6 5.3 2.2 1 3.1 1 4.2.9.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
 </a>
