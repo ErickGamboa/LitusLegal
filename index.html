@@ -289,6 +289,17 @@ header.nav.scrolled .lang{opacity:1}
 .field input,.field textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:transparent;padding:11px 2px;font-family:var(--sans);font-size:15px;color:var(--ink);font-weight:300}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--teal)}
 .field textarea{resize:none;min-height:90px}
+/* Chrome pinta un celeste propio al autocompletar. No se puede cambiar el
+   background del autofill, pero sí taparlo con una sombra interna del color
+   de la sección, así el campo sigue viéndose transparente en día y noche. */
+.field input:-webkit-autofill,
+.field input:-webkit-autofill:hover,
+.field input:-webkit-autofill:focus,
+.field textarea:-webkit-autofill{
+  -webkit-box-shadow:inset 0 0 0 100px var(--mist);
+  -webkit-text-fill-color:var(--ink);
+  caret-color:var(--ink);
+  transition:background-color 9999s ease-out 0s}
 .cinfo{display:flex;flex-direction:column;gap:30px}
 .cinfo .blk{display:flex;gap:18px;align-items:flex-start}
 .cinfo .blk svg{flex:none;color:var(--teal);margin-top:3px}
@@ -900,10 +911,10 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
       <span class="eyebrow"><span data-es>Conversemos</span><span data-en>Let's connect</span></span>
       <h2 style="margin-top:16px"><span data-es>Hablemos</span><span data-en>Let's talk</span></h2>
       <p class="lead" style="margin-top:18px"><span data-es>¿Tienes una consulta o necesitas orientación legal? Escríbenos, con gusto te ayudamos.</span><span data-en>Have a question or need legal guidance? Send us a message — we'd be happy to help.</span></p>
-      <form style="margin-top:36px" onsubmit="return false">
-        <div class="field"><label><span data-es>Nombre</span><span data-en>Name</span></label><input type="text" placeholder="—"></div>
-        <div class="field"><label><span data-es>Correo</span><span data-en>Email</span></label><input type="email" placeholder="—"></div>
-        <div class="field"><label><span data-es>¿En qué podemos ayudarte?</span><span data-en>How can we help?</span></label><textarea placeholder="—"></textarea></div>
+      <form style="margin-top:36px" id="contactForm">
+        <div class="field"><label for="cfName"><span data-es>Nombre</span><span data-en>Name</span></label><input type="text" id="cfName" name="name" autocomplete="name" placeholder="—" required></div>
+        <div class="field"><label for="cfEmail"><span data-es>Correo</span><span data-en>Email</span></label><input type="email" id="cfEmail" name="email" autocomplete="email" placeholder="—" required></div>
+        <div class="field"><label for="cfMsg"><span data-es>¿En qué podemos ayudarte?</span><span data-en>How can we help?</span></label><textarea id="cfMsg" name="message" placeholder="—" required></textarea></div>
         <button class="btn btn--dark" style="margin-top:6px"><span data-es>Enviar mensaje</span><span data-en>Send message</span></button>
       </form>
     </div>
@@ -1184,6 +1195,26 @@ var LITUS_CAL_LINK = 'erick-gamboa-xwgkar/consultation';
      entre recargas a propósito, así el sitio siempre se ve como se diseñó. */
   setLang('en');
   setTheme('light');
+
+  /* --- formulario de contacto → WhatsApp ---
+     El sitio es estático (no hay servidor que reciba el formulario), así que el
+     botón arma el mensaje y abre WhatsApp con el texto ya redactado. El idioma
+     del mensaje sigue el idioma en que está la página. */
+  var WA_NUMBER = '50685503104';
+  var cform = document.getElementById('contactForm');
+  if (cform) cform.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('cfName').value.trim();
+    var mail = document.getElementById('cfEmail').value.trim();
+    var msg  = document.getElementById('cfMsg').value.trim();
+    var es = document.documentElement.lang === 'es';
+    var text = es
+      ? '¡Hola! Mi nombre es ' + name + ', mi correo electrónico de contacto es '
+        + mail + ' y necesito ' + msg
+      : 'Hi! My name is ' + name + ', my contact email is '
+        + mail + ' and I need ' + msg;
+    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
 
   /* --- mobile menu --- */
   var burger=document.getElementById('burger'), mmenu=document.getElementById('mmenu');
