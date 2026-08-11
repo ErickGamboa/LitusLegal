@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,6 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta name="theme-color" content="#2E5E61">
 <meta name="description" content="Litus Legal Services — Derecho inmobiliario y traspaso de tierras en Tamarindo, Guanacaste, Costa Rica.">
-<script>(function(){try{var t=localStorage.getItem('litus-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -399,7 +398,8 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   .mark .word small{display:none}
   .nav-actions{gap:9px}
 }
-[data-en]{display:none}
+/* El sitio arranca en inglés: se oculta el español hasta que setLang() decida. */
+[data-es]{display:none}
 </style>
 </head>
 <body>
@@ -447,9 +447,9 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
       </div>
       <div class="lang" id="lang" title="Cambiar idioma / Change language">
         <span class="lang-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg></span>
-        <button data-lang="es" class="active"><span>ES</span></button>
+        <button data-lang="es"><span>ES</span></button>
         <i class="sep"></i>
-        <button data-lang="en"><span>EN</span></button>
+        <button data-lang="en" class="active"><span>EN</span></button>
       </div>
       <a href="#cita" class="btn btn--solid nav-cta"><span data-es>Agendar cita</span><span data-en>Book a call</span></a>
       <button class="nav-burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="mmenu">
@@ -478,9 +478,9 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
     </div>
     <div class="lang" title="Cambiar idioma / Change language">
       <span class="lang-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 010 18 15 15 0 010-18z"/></svg></span>
-      <button data-lang="es" class="active"><span>ES</span></button>
+      <button data-lang="es"><span>ES</span></button>
       <i class="sep"></i>
-      <button data-lang="en"><span>EN</span></button>
+      <button data-lang="en" class="active"><span>EN</span></button>
     </div>
   </div>
 </nav>
@@ -1173,7 +1173,6 @@ var LITUS_CAL_LINK = 'erick-gamboa-xwgkar/consultation';
   function setTheme(t){
     document.documentElement.setAttribute('data-theme', t);
     document.querySelectorAll('[data-theme-set]').forEach(function(b){ b.classList.toggle('active', b.dataset.themeSet===t); });
-    try{ localStorage.setItem('litus-theme', t); }catch(e){}
     if (window.litusCalTheme) window.litusCalTheme(t);
   }
 
@@ -1181,8 +1180,10 @@ var LITUS_CAL_LINK = 'erick-gamboa-xwgkar/consultation';
     var lb=e.target.closest('[data-lang]'); if(lb){ setLang(lb.dataset.lang); return; }
     var tb=e.target.closest('[data-theme-set]'); if(tb){ setTheme(tb.dataset.themeSet); }
   });
-  setLang('es');
-  setTheme(document.documentElement.getAttribute('data-theme')==='dark' ? 'dark' : 'light');
+  /* Toda visita abre igual: modo diurno e inglés. La preferencia no se guarda
+     entre recargas a propósito, así el sitio siempre se ve como se diseñó. */
+  setLang('en');
+  setTheme('light');
 
   /* --- mobile menu --- */
   var burger=document.getElementById('burger'), mmenu=document.getElementById('mmenu');
