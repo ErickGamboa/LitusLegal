@@ -1096,9 +1096,62 @@ var LITUS_CAL_LINK = 'erick-gamboa-xwgkar/consultation';
       hideEventTypeDetails: false,
       hideBranding: true,
       layout: 'month_view',
+      /* Los colores del calendario se igualan a los de la página (las mismas
+         variables de :root de arriba) para que el embed no se vea como una caja
+         blanca pegada encima. Cal.com acepta cualquier color aquí; los nombres
+         van sin "--". 'cal-bg' es el fondo general y debe coincidir con --paper,
+         que es el fondo de la sección #cita. */
       cssVarsPerTheme: {
-        light: { 'cal-brand': '#2E5E61' },
-        dark:  { 'cal-brand': '#4e9295' }
+        light: {
+          'cal-brand':          '#2E5E61',
+          'cal-bg':             '#f3e9d6',   /* --paper  */
+          'cal-bg-emphasis':    '#e2d3b6',   /* --mist-2 (hover de los horarios) */
+          'cal-bg-subtle':      '#ece0c8',   /* --mist   */
+          'cal-bg-muted':       '#ece0c8',
+          'cal-border':         '#ddcfb2',   /* --line   */
+          'cal-border-subtle':  '#ddcfb2',
+          'cal-border-emphasis':'#8f836d',   /* --stone  */
+          'cal-border-booker':  '#ddcfb2',
+          'cal-text':           '#33373a',   /* --ink-soft */
+          'cal-text-emphasis':  '#141414',   /* --ink    */
+          'cal-text-subtle':    '#33373a',
+          'cal-text-muted':     '#8f836d',
+          /* Cal.com está migrando a un sistema de colores nuevo: el marco del
+             calendario todavía usa las variables cal-* de arriba, pero los campos
+             del formulario (nombre, correo, notas) ya usan estas otras. Sin ellas
+             las cajas de texto se quedan blancas dentro del beige. */
+          'background':         '#f3e9d6',
+          'card':               '#f3e9d6',
+          'popover':            '#f3e9d6',
+          'foreground':         '#141414',
+          'muted-foreground':   '#8f836d',
+          'input':              '#ddcfb2',
+          'border':             '#ddcfb2'
+        },
+        dark: {
+          'cal-brand':          '#4e9295',
+          'cal-bg':             '#0d1617',
+          'cal-bg-emphasis':    '#1a2627',
+          'cal-bg-subtle':      '#111c1d',
+          'cal-bg-muted':       '#111c1d',
+          'cal-border':         '#223132',
+          'cal-border-subtle':  '#223132',
+          'cal-border-emphasis':'#8a9595',
+          'cal-border-booker':  '#223132',
+          'cal-text':           '#aeb6b6',
+          'cal-text-emphasis':  '#e9ecec',
+          'cal-text-subtle':    '#aeb6b6',
+          'cal-text-muted':     '#8a9595',
+          /* Mismas variables nuevas, en oscuro. Los bordes van translúcidos (igual
+             que --line del sitio) para que no se recorten sobre el fondo. */
+          'background':         '#0d1617',
+          'card':               '#0d1617',
+          'popover':            '#111c1d',
+          'foreground':         '#e9ecec',
+          'muted-foreground':   '#8a9595',
+          'input':              'rgba(255,255,255,.10)',
+          'border':             'rgba(255,255,255,.12)'
+        }
       }
     });
 
