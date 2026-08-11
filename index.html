@@ -51,7 +51,6 @@ body,.section,.svc,.tst,.calendar,.strip,footer,header.nav{transition:background
 [data-theme="dark"] .btn--dark{background:var(--ink);color:var(--paper)}
 [data-theme="dark"] .map{background:linear-gradient(135deg,#16211f,#1f2c2b)}
 [data-theme="dark"] .map .nm{background:rgba(13,22,23,.82);color:var(--ink-soft)}
-[data-theme="dark"] .cal-days .d.muted{color:#465251}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -266,30 +265,21 @@ header.nav.scrolled .lang{opacity:1}
 .tst .who .nm{font-weight:500;font-size:14px}
 .tst .who .ct{font-size:14px;color:var(--stone)}
 
-/* ---------- calendar / cita ---------- */
-.cal-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.calendar{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:34px;box-shadow:0 30px 70px -45px rgba(20,40,40,.4)}
-.cal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-.cal-top .m{font-family:var(--serif);font-size:24px}
-.cal-top .nav-b{display:flex;gap:8px}
-.cal-top .nav-b button{width:34px;height:34px;border:1px solid var(--line);background:var(--surface);border-radius:50%;cursor:pointer;color:var(--ink-soft);display:flex;align-items:center;justify-content:center}
-.cal-top .nav-b button:hover{border-color:var(--teal);color:var(--teal)}
-.cal-dow,.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.cal-dow span{text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);padding:8px 0}
-.cal-days{margin-top:4px}
-.cal-days .d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:14px;border-radius:50%;color:var(--ink-soft);position:relative;cursor:default}
-.cal-days .d.muted{color:#c9ccc9}
-.cal-days .d.free{cursor:pointer;color:var(--ink);font-weight:400}
-.cal-days .d.free::after{content:"";position:absolute;bottom:6px;width:4px;height:4px;border-radius:50%;background:var(--teal-soft)}
-.cal-days .d.free:hover{background:var(--mist)}
-.cal-days .d.sel{background:var(--teal);color:#fff;font-weight:500}
-.cal-days .d.sel::after{background:#fff}
-.slots{margin-top:26px;border-top:1px solid var(--line);padding-top:22px}
-.slots .lbl{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-bottom:14px}
-.slots .row{display:flex;gap:10px;flex-wrap:wrap}
-.slots .row button{border:1px solid var(--line);background:var(--surface);border-radius:30px;padding:9px 18px;font-family:var(--sans);font-size:13px;cursor:pointer;color:var(--ink-soft)}
-.slots .row button:hover{border-color:var(--teal);color:var(--teal)}
-.slots .row button.on{background:var(--teal);border-color:var(--teal);color:#fff}
+/* ---------- calendar / cita (Cal.com embed) ---------- */
+/* El calendario va a todo lo ancho a propósito: Cal.com apila los horarios debajo
+   del mes cuando el contenedor es angosto, y solo los pone a la derecha si tiene
+   espacio suficiente. Por eso el texto va arriba y no al lado. */
+.cita-top{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end;margin-bottom:46px}
+.cita-points{padding-bottom:4px}
+/* Sin tarjeta ni marco: que se vea únicamente el calendario de Cal.com */
+.cal-embed-card{overflow:hidden}
+.cal-embed{width:100%;min-height:620px}
+.cal-embed iframe{border-radius:6px;display:block}
+.cal-fallback{padding:40px 24px;text-align:center}
+.cal-fallback .t{font-family:var(--serif);font-size:24px;margin-bottom:12px}
+.cal-fallback p{color:var(--ink-soft);font-size:15px;margin-bottom:24px}
+.cal-fallback .btn{width:100%;justify-content:center}
+.cal-fallback .btn+.btn{margin-top:10px}
 
 /* ---------- contact ---------- */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
@@ -356,7 +346,7 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   .hero .sub{max-width:46ch}
   .section{padding:84px 0}
   .place-sec .wrap{padding:84px 32px}
-  .intro-grid,.cal-grid,.contact-grid,.proc-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+  .intro-grid,.cita-top,.contact-grid,.proc-grid,.about-grid{grid-template-columns:1fr;gap:40px}
   .intro-grid img{height:420px}
   .about-head{position:static}
   .svc-grid{grid-template-columns:1fr 1fr}
@@ -388,8 +378,8 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   .tst{flex-basis:86%;scroll-snap-align:center;padding:28px 26px}
   .tst-arrow{display:none}
   .calendar{padding:22px}
-  .cal-top .m{font-size:21px}
-  .cal-days .d{font-size:13px}
+  .cal-embed-card{padding:8px}
+  .cal-embed{min-height:560px}
   .lead{font-size:17px}
   .about-body .lead{font-size:19px}
   .strip .wrap{flex-direction:column;align-items:flex-start;width:fit-content;max-width:100%;margin:0 auto;gap:14px;text-align:left}
@@ -873,47 +863,29 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
 
 <!-- ============ CALENDAR / CITA ============ -->
 <section class="section" id="cita">
-  <div class="wrap cal-grid">
+  <div class="wrap">
+   <div class="cita-top">
     <div>
       <span class="eyebrow"><span data-es>Agenda una consulta</span><span data-en>Schedule a consultation</span></span>
       <h2 style="margin-top:16px"><span data-es>Las soluciones legales suelen empezar con una conversación</span><span data-en>Legal solutions often start with a conversation</span></h2>
       <p class="lead" style="margin-top:20px"><span data-es>Nos tomamos el tiempo de entender tus objetivos, responder tus preguntas y explicarte el proceso para que avances con confianza.</span><span data-en>We take the time to understand your goals, answer your questions, and explain the process so you can move forward with confidence.</span></p>
-      <ul style="list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:14px">
+    </div>
+      <ul class="cita-points" style="list-style:none;display:flex;flex-direction:column;gap:14px">
         <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Llamada introductoria sin costo</span><span data-en>Complimentary introductory call</span></li>
         <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Aproximadamente 30 minutos</span><span data-en>Approximately 30 minutes</span></li>
         <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Presencial o videollamada</span><span data-en>In person or video call</span></li>
         <li style="display:flex;gap:12px;align-items:center;color:var(--ink-soft);font-size:15px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-es>Sujeto a confirmación</span><span data-en>Subject to confirmation</span></li>
       </ul>
-    </div>
-    <div class="calendar">
-      <div class="cal-top">
-        <div class="m"><span data-es>Junio 2026</span><span data-en>June 2026</span></div>
-        <div class="nav-b">
-          <button aria-label="prev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
-          <button aria-label="next"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
-        </div>
-      </div>
-      <div class="cal-dow">
-        <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
-      </div>
-      <div class="cal-days">
-        <div class="d muted">31</div><div class="d free">1</div><div class="d free">2</div><div class="d">3</div><div class="d free">4</div><div class="d free">5</div><div class="d muted">6</div>
-        <div class="d muted">7</div><div class="d free">8</div><div class="d free">9</div><div class="d free">10</div><div class="d">11</div><div class="d free">12</div><div class="d muted">13</div>
-        <div class="d muted">14</div><div class="d free">15</div><div class="d sel">16</div><div class="d free">17</div><div class="d free">18</div><div class="d free">19</div><div class="d muted">20</div>
-        <div class="d muted">21</div><div class="d free">22</div><div class="d free">23</div><div class="d">24</div><div class="d free">25</div><div class="d free">26</div><div class="d muted">27</div>
-        <div class="d muted">28</div><div class="d free">29</div><div class="d free">30</div><div class="d muted">1</div><div class="d muted">2</div><div class="d muted">3</div><div class="d muted">4</div>
-      </div>
-      <div class="slots">
-        <div class="lbl"><span data-es>Martes 16 · Horarios disponibles</span><span data-en>Tuesday 16 · Available times</span></div>
-        <div class="row">
-          <button class="on">11:00</button>
-          <button>11:30</button>
-          <button>12:00</button>
-          <button>15:00</button>
-          <button>15:30</button>
-          <button>16:00</button>
-        </div>
-        <a href="#contacto" class="btn btn--solid" style="margin-top:22px;width:100%;justify-content:center"><span data-es>Confirmar cita</span><span data-en>Confirm appointment</span></a>
+   </div>
+    <div class="cal-embed-card">
+      <!-- Calendario real (Cal.com). Muestra solo los horarios libres de Evelyn;
+           al enviar la solicitud el espacio queda bloqueado hasta que ella responda. -->
+      <div id="litusCal" class="cal-embed"></div>
+      <div class="cal-fallback" id="calFallback" hidden>
+        <div class="t"><span data-es>Agenda tu consulta</span><span data-en>Schedule your consultation</span></div>
+        <p><span data-es>El calendario no se pudo cargar en este momento. Escríbenos y coordinamos tu cita de inmediato.</span><span data-en>The calendar could not load right now. Send us a message and we'll arrange your appointment right away.</span></p>
+        <a href="https://wa.me/50685503104" target="_blank" rel="noopener" class="btn btn--solid"><span data-es>Escribir por WhatsApp</span><span data-en>Message on WhatsApp</span></a>
+        <a href="mailto:elopez@lituslegalcr.com" class="btn btn--line"><span data-es>Enviar un correo</span><span data-en>Send an email</span></a>
       </div>
     </div>
   </div>
@@ -1012,6 +984,112 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.5 8.5 3.5 15.5c0 2.3.6 4.4 1.7 6.3L3 29l7.4-2c1.8 1 3.8 1.5 5.9 1.5 7 0 12.5-5.5 12.5-12.5S23 3 16 3zm0 22.5c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-3.9 1 1-3.8-.3-.4a10 10 0 01-1.6-5.6C5.5 9.7 10.2 5 16 5s10.5 4.7 10.5 10.5S21.8 25.5 16 25.5zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.9-.9-3.1-1.7-4.4-3.8-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6s-.7-1.7-1-2.3c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.5 3.8 6 5.3 2.2 1 3.1 1 4.2.9.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
 </a>
 
+<!-- ============ CAL.COM · reserva de citas ============ -->
+<script>
+/* Calendario de citas (Cal.com).
+   El flujo es: el cliente escoge fecha y hora -> a Evelyn le llega un correo con
+   botones Aceptar / Rechazar -> el cliente recibe por correo la respuesta y, si
+   se acepta, el enlace de Google Meet. El espacio queda bloqueado en la página
+   desde el momento en que se solicita (ajuste "requiere confirmación" con
+   bloqueo del espacio pendiente, en el panel de Cal.com).
+
+   El calendario se deja siempre en inglés, con el idioma fijado en el propio evento
+   de Cal.com ("Idioma de la interfaz"). No sigue el toggle ES/EN del sitio: Cal.com
+   solo permite fijar el idioma por tipo de evento, y hacerlo bilingüe exigiría dos
+   eventos separados, lo que abre la puerta a que se reserve dos veces el mismo
+   horario mientras una solicitud está pendiente.
+
+   ▸ CAMBIAR AQUÍ el enlace del evento de Cal.com (usuario/evento):
+
+   OJO: por ahora apunta a la cuenta de prueba de Erick, para aprender el flujo.
+   Antes de publicar el sitio hay que cambiarlo a la cuenta real de Evelyn. */
+var LITUS_CAL_LINK = 'erick-gamboa-xwgkar/consultation';
+
+(function(){
+  var mount = document.getElementById('litusCal');
+  var fallback = document.getElementById('calFallback');
+  if (!mount) return;
+
+  var linkOk = false;
+
+  function showFallback(){
+    if (!fallback || fallback.hidden === false) return;
+    mount.hidden = true;
+    fallback.hidden = false;
+  }
+
+  /* Cargador oficial del embed de Cal.com */
+  (function (C, A, L) {
+    var p = function (a, ar) { a.q.push(ar); };
+    var d = C.document;
+    C.Cal = C.Cal || function () {
+      var cal = C.Cal, ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        var s = d.createElement('script');
+        s.src = A;
+        s.onerror = showFallback;
+        d.head.appendChild(s);
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        var api = function () { p(api, arguments); };
+        var namespace = ar[1];
+        api.q = api.q || [];
+        if (typeof namespace === 'string') {
+          cal.ns[namespace] = cal.ns[namespace] || api;
+          p(cal.ns[namespace], ar);
+          p(cal, ['initNamespace', namespace]);
+        } else p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, 'https://app.cal.com/embed/embed.js', 'init');
+
+  function currentTheme(){
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  }
+
+  Cal('init', 'litus', { origin: 'https://app.cal.com' });
+
+  Cal.ns.litus('inline', {
+    elementOrSelector: '#litusCal',
+    calLink: LITUS_CAL_LINK,
+    layout: 'month_view',
+    config: { layout: 'month_view', theme: currentTheme() }
+  });
+
+  Cal.ns.litus('ui', {
+    theme: currentTheme(),
+    hideEventTypeDetails: false,
+    hideBranding: true,
+    layout: 'month_view',
+    cssVarsPerTheme: {
+      light: { 'cal-brand': '#2E5E61' },
+      dark:  { 'cal-brand': '#4e9295' }
+    }
+  });
+
+  /* El toggle día/noche del sitio llama a esto para que el calendario cambie igual */
+  window.litusCalTheme = function(t){
+    try { Cal.ns.litus('ui', { theme: t === 'dark' ? 'dark' : 'light' }); } catch(e){}
+  };
+
+  /* Respaldo. Si el enlace de Cal.com no existe o no carga, Cal.com pinta dentro del
+     iframe su propio error en inglés ("Error Code: 404. Cal Link seems to be wrong").
+     Preferimos ocultar eso y mostrar WhatsApp y correo. */
+  Cal.ns.litus('on', { action: 'linkReady', callback: function(){ linkOk = true; } });
+  Cal.ns.litus('on', { action: 'linkFailed', callback: showFallback });
+
+  /* Último recurso, por si los eventos no llegan a dispararse */
+  setTimeout(function(){
+    if (!linkOk && !mount.querySelector('iframe')) showFallback();
+  }, 8000);
+})();
+</script>
+
 <script>
 /* --- language toggle (muestra el bilingüe; sin backend) --- */
 (function(){
@@ -1061,6 +1139,7 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
     document.documentElement.setAttribute('data-theme', t);
     document.querySelectorAll('[data-theme-set]').forEach(function(b){ b.classList.toggle('active', b.dataset.themeSet===t); });
     try{ localStorage.setItem('litus-theme', t); }catch(e){}
+    if (window.litusCalTheme) window.litusCalTheme(t);
   }
 
   document.addEventListener('click',function(e){
@@ -1082,20 +1161,6 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   mmenu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
   window.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
   window.addEventListener('resize',function(){ if(window.innerWidth>980) closeMenu(); });
-
-  /* visual-only: pick a calendar day */
-  document.querySelectorAll('.cal-days .d.free').forEach(function(d){
-    d.addEventListener('click',function(){
-      document.querySelectorAll('.cal-days .d.sel').forEach(function(s){s.classList.remove('sel');s.classList.add('free');});
-      d.classList.remove('free'); d.classList.add('sel');
-    });
-  });
-  document.querySelectorAll('.slots .row button').forEach(function(s){
-    s.addEventListener('click',function(){
-      document.querySelectorAll('.slots .row button.on').forEach(function(o){o.classList.remove('on');});
-      s.classList.add('on');
-    });
-  });
 })();
 
 /* ---------- testimonials carousel: arrows + pagination dots ---------- */
