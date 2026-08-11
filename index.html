@@ -271,11 +271,36 @@ header.nav.scrolled .lang{opacity:1}
 .cita-top{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end;margin-bottom:46px}
 .cita-points{padding-bottom:4px}
 /* Sin tarjeta ni marco: que se vea únicamente el calendario de Cal.com */
-.cal-embed-card{overflow:hidden}
-/* min-height fijo: al remontar el calendario (cambio de modo día/noche) el hueco
-   conserva su alto, así la página no salta ni se mueve el scroll. */
-.cal-embed{width:100%;min-height:620px;opacity:1;transition:opacity .25s ease}
+/* min-height en la tarjeta (no en .cal-embed): al remontar el calendario por un
+   cambio de modo día/noche el hueco conserva su alto, así la página no salta ni
+   se mueve el scroll. Va aquí y no en .cal-embed para que .cal-embed mida
+   exactamente lo mismo que el iframe — de eso depende la franja de abajo. */
+.cal-embed-card{overflow:hidden;min-height:620px;container-type:inline-size}
+/* Si el calendario falló y se muestra el respaldo, la tarjeta se ajusta al texto. */
+.cal-embed-card:has(.cal-fallback:not([hidden])){min-height:0}
+.cal-embed{width:100%;position:relative;opacity:1;transition:opacity .25s ease}
 .cal-embed iframe{border-radius:6px;display:block}
+/* Franja que cubre el logo de Cal.com al pie del calendario.
+   Cal.com lo dibuja en una fila propia debajo de la tarjeta: 24px de margen,
+   8px de padding y 15px de logo, o sea los últimos ~47px del iframe. A los lados
+   de esa fila no hay nada, así que taparla a todo lo ancho no cubre ningún botón.
+   Va del color del fondo de la sección, por lo que cambia sola con el modo
+   día/noche, y al ir anclada al borde inferior sigue al calendario.
+
+   Solo se aplica cuando el iframe pasa de 768px: por debajo de ese ancho Cal.com
+   cambia al layout "mobile", donde no dibuja la marca y donde los botones de
+   confirmar y volver quedan justo al pie. Ahí la franja no taparía nada útil y sí
+   estorbaría, así que no existe. El corte se mide contra el ancho del propio
+   contenedor (no de la ventana), que es exactamente el ancho del iframe, así que
+   sigue siendo correcto aunque cambien los márgenes de la página.
+   Si el navegador no soporta container queries la franja simplemente no aparece:
+   se ve la marca, que es mucho mejor que tapar un botón. */
+@container (min-width:769px){
+  .cal-embed::after{content:'';position:absolute;left:0;right:0;bottom:0;height:64px;
+    background:var(--paper);pointer-events:none;z-index:2}
+  /* Mientras se remonta no hay iframe: sin esto la franja quedaría flotando sola. */
+  .cal-embed:empty::after{display:none}
+}
 .cal-fallback{padding:40px 24px;text-align:center}
 .cal-fallback .t{font-family:var(--serif);font-size:24px;margin-bottom:12px}
 .cal-fallback p{color:var(--ink-soft);font-size:15px;margin-bottom:24px}
@@ -390,8 +415,7 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
   .tst{flex-basis:86%;scroll-snap-align:center;padding:28px 26px}
   .tst-arrow{display:none}
   .calendar{padding:22px}
-  .cal-embed-card{padding:8px}
-  .cal-embed{min-height:560px}
+  .cal-embed-card{padding:8px;min-height:560px}
   .lead{font-size:17px}
   .about-body .lead{font-size:19px}
   .strip .wrap{flex-direction:column;align-items:flex-start;width:fit-content;max-width:100%;margin:0 auto;gap:14px;text-align:left}
