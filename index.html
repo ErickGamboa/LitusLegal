@@ -273,7 +273,9 @@ header.nav.scrolled .lang{opacity:1}
 .cita-points{padding-bottom:4px}
 /* Sin tarjeta ni marco: que se vea únicamente el calendario de Cal.com */
 .cal-embed-card{overflow:hidden}
-.cal-embed{width:100%;min-height:620px}
+/* min-height fijo: al remontar el calendario (cambio de modo día/noche) el hueco
+   conserva su alto, así la página no salta ni se mueve el scroll. */
+.cal-embed{width:100%;min-height:620px;opacity:1;transition:opacity .25s ease}
 .cal-embed iframe{border-radius:6px;display:block}
 .cal-fallback{padding:40px 24px;text-align:center}
 .cal-fallback .t{font-family:var(--serif);font-size:24px;margin-bottom:12px}
@@ -1052,41 +1054,74 @@ var LITUS_CAL_LINK = 'erick-gamboa-xwgkar/consultation';
     return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
 
-  Cal('init', 'litus', { origin: 'https://app.cal.com' });
+  /* Cal.com no repinta un iframe ya cargado cuando se le cambia el tema, así que
+     para seguir el modo día/noche hay que volver a montarlo. Se remonta SOLO este
+     bloque: la página no se recarga y no se pierde la posición del scroll. Cada
+     montaje usa un namespace nuevo para no chocar con el estado del anterior. */
+  var seq = 0;
+  var mountedTheme = null;
 
-  Cal.ns.litus('inline', {
-    elementOrSelector: '#litusCal',
-    calLink: LITUS_CAL_LINK,
-    layout: 'month_view',
-    config: { layout: 'month_view', theme: currentTheme() }
-  });
+  function mountCal(theme){
+    seq++;
+    var mySeq = seq;
+    var ns = 'litus' + mySeq;
+    mountedTheme = theme;
+    linkOk = false;
 
-  Cal.ns.litus('ui', {
-    theme: currentTheme(),
-    hideEventTypeDetails: false,
-    hideBranding: true,
-    layout: 'month_view',
-    cssVarsPerTheme: {
-      light: { 'cal-brand': '#2E5E61' },
-      dark:  { 'cal-brand': '#4e9295' }
-    }
-  });
+    mount.innerHTML = '';           /* quita el iframe anterior */
+    mount.style.opacity = '0';
 
-  /* El toggle día/noche del sitio llama a esto para que el calendario cambie igual */
+    Cal('init', ns, { origin: 'https://app.cal.com' });
+
+    Cal.ns[ns]('inline', {
+      elementOrSelector: '#litusCal',
+      calLink: LITUS_CAL_LINK,
+      layout: 'month_view',
+      config: { layout: 'month_view', theme: theme }
+    });
+
+    Cal.ns[ns]('ui', {
+      theme: theme,
+      hideEventTypeDetails: false,
+      hideBranding: true,
+      layout: 'month_view',
+      cssVarsPerTheme: {
+        light: { 'cal-brand': '#2E5E61' },
+        dark:  { 'cal-brand': '#4e9295' }
+      }
+    });
+
+    /* Respaldo. Si el enlace de Cal.com no existe o no carga, Cal.com pinta dentro
+       del iframe su propio error en inglés ("Error Code: 404. Cal Link seems to be
+       wrong"). Preferimos ocultar eso y mostrar WhatsApp y correo.
+       Los guards de mySeq evitan que un montaje viejo afecte al actual. */
+    Cal.ns[ns]('on', { action: 'linkReady', callback: function(){
+      if (mySeq !== seq) return;
+      linkOk = true;
+      mount.style.opacity = '1';
+    }});
+    Cal.ns[ns]('on', { action: 'linkFailed', callback: function(){
+      if (mySeq !== seq) return;
+      showFallback();
+    }});
+
+    /* Último recurso, por si los eventos no llegan a dispararse */
+    setTimeout(function(){
+      if (mySeq !== seq) return;
+      mount.style.opacity = '1';              /* nunca dejarlo invisible */
+      if (!linkOk && !mount.querySelector('iframe')) showFallback();
+    }, 8000);
+  }
+
+  /* El toggle día/noche del sitio llama a esto */
   window.litusCalTheme = function(t){
-    try { Cal.ns.litus('ui', { theme: t === 'dark' ? 'dark' : 'light' }); } catch(e){}
+    var theme = t === 'dark' ? 'dark' : 'light';
+    if (theme === mountedTheme) return;                       /* ya está así */
+    if (fallback && fallback.hidden === false) return;         /* estamos en respaldo */
+    mountCal(theme);
   };
 
-  /* Respaldo. Si el enlace de Cal.com no existe o no carga, Cal.com pinta dentro del
-     iframe su propio error en inglés ("Error Code: 404. Cal Link seems to be wrong").
-     Preferimos ocultar eso y mostrar WhatsApp y correo. */
-  Cal.ns.litus('on', { action: 'linkReady', callback: function(){ linkOk = true; } });
-  Cal.ns.litus('on', { action: 'linkFailed', callback: showFallback });
-
-  /* Último recurso, por si los eventos no llegan a dispararse */
-  setTimeout(function(){
-    if (!linkOk && !mount.querySelector('iframe')) showFallback();
-  }, 8000);
+  mountCal(currentTheme());
 })();
 </script>
 
