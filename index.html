@@ -230,7 +230,12 @@ header.nav.scrolled .lang{opacity:1}
 .person .meta h3{margin-top:8px;font-size:28px}
 .person .meta p{margin-top:12px;font-size:15px;color:var(--ink-soft);max-width:46ch}
 .person .creds{margin-top:auto;padding-top:18px;display:flex;flex-wrap:wrap;gap:8px}
-.person .creds span{font-size:11px;letter-spacing:.08em;border:1px solid var(--line);border-radius:30px;padding:6px 14px;color:var(--stone)}
+/* Los chips se acomodan solos: el contenedor los baja de línea y cada chip nunca
+   pasa del ancho disponible. Si un texto largo ("Colegio de Abogados de Costa
+   Rica") no cabe en una línea, parte adentro del chip en vez de desbordar la
+   columna; de ahí el text-align y el line-height. */
+.person .creds span{font-size:11px;letter-spacing:.08em;border:1px solid var(--line);border-radius:30px;padding:6px 14px;color:var(--stone);
+  max-width:100%;text-align:center;line-height:1.45}
 
 /* ---------- testimonials ---------- */
 /* testimonials over photo background */
@@ -768,7 +773,7 @@ body.menu-open header.nav{background:var(--paper);color:var(--ink);box-shadow:0 
         <h3>Evelyn López</h3>
         <p><span data-es>Abogada con experiencia que atiende a clientes en Guanacaste desde 2019. Evelyn brinda asesoría legal clara y práctica, con un enfoque personalizado y comunicación oportuna.</span><span data-en>An experienced attorney serving clients in Guanacaste since 2019, Evelyn provides clear, practical legal guidance with a personalized approach and responsive communication.</span></p>
         <div class="creds">
-          <span><span data-es>Colegio de Abogados CR</span><span data-en>CR Bar Association</span></span>
+          <span><span data-es>Colegio de Abogados de Costa Rica</span><span data-en>Costa Rica Bar Association</span></span>
           <span><span data-es>Notaria Pública</span><span data-en>Public Notary</span></span>
           <span>ES / EN</span>
         </div>
